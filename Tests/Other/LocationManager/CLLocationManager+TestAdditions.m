@@ -39,7 +39,11 @@ static BOOL mockingEnabled = NO;
     if (mockingEnabled != enabled) {
         mockingEnabled = enabled;
 
+#if TARGET_OS_TV
+        [PFTestSwizzlingUtilities swizzleMethod:@selector(requestLocation) withMethod:@selector(overriddenStartUpdatingLocation) inClass:self];
+#else
         [PFTestSwizzlingUtilities swizzleMethod:@selector(startUpdatingLocation) withMethod:@selector(overriddenStartUpdatingLocation) inClass:self];
+#endif
     }
 }
 
