@@ -119,10 +119,13 @@
     [Parse _currentManager].analyticsController = controllerMock;
 
     NSDictionary *notificationPayload = @{ @"aps" : @"yolo" };
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
     NSDictionary *launchOptions = @{ UIApplicationLaunchOptionsRemoteNotificationKey : notificationPayload };
-#else
+#elif PF_TARGET_OS_OSX
     NSDictionary *launchOptions = @{ NSApplicationLaunchUserNotificationKey : notificationPayload };
+#elif TARGET_OS_TV
+    NSDictionary *launchOptions = nil;
+    notificationPayload = nil;
 #endif
 
     [[PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions] waitUntilFinished];
@@ -135,10 +138,12 @@
     [Parse _currentManager].analyticsController = controllerMock;
 
     NSDictionary *notificationPayload = @{ @"aps" : @"yolo" };
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
     NSDictionary *launchOptions = @{ UIApplicationLaunchOptionsRemoteNotificationKey : notificationPayload };
-#else
+#elif PF_TARGET_OS_OSX
     NSDictionary *launchOptions = @{ NSApplicationLaunchUserNotificationKey : notificationPayload };
+#elif TARGET_OS_TV
+    NSDictionary *launchOptions = nil;
 #endif
 
     BFTask *task = [BFTask taskWithResult:@YES];
