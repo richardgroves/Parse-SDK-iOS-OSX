@@ -20,15 +20,49 @@
                ReferencedContainer = "container:Parse.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8156516E1BDEC45B00ADBE30"
+               BuildableName = "ParseUnitTests-tvOS.xctest"
+               BlueprintName = "ParseUnitTests-tvOS"
+               ReferencedContainer = "container:Parse.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8156516E1BDEC45B00ADBE30"
+               BuildableName = "ParseUnitTests-tvOS.xctest"
+               BlueprintName = "ParseUnitTests-tvOS"
+               ReferencedContainer = "container:Parse.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "815F22AF1BD04D150054659F"
+            BuildableName = "Parse.framework"
+            BlueprintName = "Parse-tvOS"
+            ReferencedContainer = "container:Parse.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
