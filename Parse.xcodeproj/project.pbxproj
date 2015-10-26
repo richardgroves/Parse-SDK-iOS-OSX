@@ -677,7 +677,6 @@
 		815651911BDEC45B00ADBE30 /* QueryUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149161B1B66D44500EFD14F /* QueryUnitTests.m */; };
 		815651921BDEC45B00ADBE30 /* URLSessionDataTaskDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5732DE01B6712140066DCD5 /* URLSessionDataTaskDelegateTests.m */; };
 		815651941BDEC45B00ADBE30 /* ObjectUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916041B66D44500EFD14F /* ObjectUtilitiesTests.m */; };
-		815651961BDEC45B00ADBE30 /* ProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149160C1B66D44500EFD14F /* ProductTests.m */; };
 		815651971BDEC45B00ADBE30 /* URLSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5556A141B66F36000410837 /* URLSessionTests.m */; };
 		815651981BDEC45B00ADBE30 /* CloudCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D81B66D44500EFD14F /* CloudCommandTests.m */; };
 		815651991BDEC45B00ADBE30 /* AnalyticsControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D01B66D44500EFD14F /* AnalyticsControllerTests.m */; };
@@ -755,8 +754,9 @@
 		815651EC1BDEC45B00ADBE30 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CBA36B1612829C0062C84A /* Social.framework */; };
 		815651ED1BDEC45B00ADBE30 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103FA42198FC25B000BAE3F /* Bolts.framework */; };
 		815651EE1BDEC45B00ADBE30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B0B3141B44A21100F3EBC4 /* SystemConfiguration.framework */; };
-		815652021BDEC49600ADBE30 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815651FC1BDEC45B00ADBE30 /* OCMock.framework */; };
 		815652031BDEC54C00ADBE30 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815F24151BD04D150054659F /* Parse.framework */; };
+		815652071BDEC92800ADBE30 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815651FC1BDEC45B00ADBE30 /* OCMock.framework */; };
+		8156520B1BDECE8F00ADBE30 /* OCMock.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 815651FC1BDEC45B00ADBE30 /* OCMock.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		815868E21AF9818D009A5751 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103FA44198FC267000BAE3F /* Bolts.framework */; };
 		815868E71AF98731009A5751 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103FA44198FC267000BAE3F /* Bolts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		815960A11ABCA3B30069EBCC /* PFFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8159609F1ABCA3B30069EBCC /* PFFileManager.h */; };
@@ -1494,6 +1494,8 @@
 		81F0E89B19E6F83E00812A88 /* PFUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0925ABF513D791770095FEFA /* PFUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81F0E89C19E6F83E00812A88 /* PFObject+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BBE98E16D18E5800CD7B52 /* PFObject+Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		81F0E89D19E6F83E00812A88 /* PFSubclassing.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E81E8316EEF93E001D034F /* PFSubclassing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81F157101BDEDE0500610FC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F1570E1BDEDE0500610FC5 /* main.m */; };
+		81F157121BDEDEB000610FC5 /* ProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149160C1B66D44500EFD14F /* ProductTests.m */; };
 		91115EF91A097AF30092D1C9 /* PFEventuallyPin.h in Headers */ = {isa = PBXBuildFile; fileRef = 91115EF71A097AF30092D1C9 /* PFEventuallyPin.h */; };
 		91115EFA1A097AF30092D1C9 /* PFEventuallyPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 91115EF81A097AF30092D1C9 /* PFEventuallyPin.m */; };
 		91CDB94C1A32E5C900FF830F /* PFEventuallyQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DF24911A09BA7600CFC7D4 /* PFEventuallyQueue.m */; };
@@ -1751,6 +1753,13 @@
 			remoteGlobalIDString = 030EF0A714632FD000B04273;
 			remoteInfo = OCMock;
 		};
+		81F157091BDEDD5600610FC5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09D33641139C54930098E916 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81F156F01BDEDD4D00610FC5;
+			remoteInfo = "ParseTestApplication-tvOS";
+		};
 		F569F07E1B14DB3C00296F73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 09D33641139C54930098E916 /* Project object */;
@@ -1767,6 +1776,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8156520B1BDECE8F00ADBE30 /* OCMock.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2253,6 +2263,10 @@
 		81EDD4D11B59A6EC002F69C0 /* PFCommandRunning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFCommandRunning.h; sourceTree = "<group>"; };
 		81EEE1AE1B446D600087AC4D /* PFCurrentUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFCurrentUserController.h; sourceTree = "<group>"; };
 		81EEE1AF1B446D600087AC4D /* PFCurrentUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFCurrentUserController.m; sourceTree = "<group>"; };
+		81F156F11BDEDD4D00610FC5 /* ParseTestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseTestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81F1570D1BDEDE0500610FC5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81F1570E1BDEDE0500610FC5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		81F157111BDEDE2F00610FC5 /* ParseTestApplication-tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ParseTestApplication-tvOS.xcconfig"; sourceTree = "<group>"; };
 		91115EF71A097AF30092D1C9 /* PFEventuallyPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFEventuallyPin.h; sourceTree = "<group>"; };
 		91115EF81A097AF30092D1C9 /* PFEventuallyPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFEventuallyPin.m; sourceTree = "<group>"; };
 		913B9F2C1A311FF40040247C /* PFCommandCache_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFCommandCache_Private.h; sourceTree = "<group>"; };
@@ -2347,8 +2361,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815652071BDEC92800ADBE30 /* OCMock.framework in Frameworks */,
 				815652031BDEC54C00ADBE30 /* Parse.framework in Frameworks */,
-				815652021BDEC49600ADBE30 /* OCMock.framework in Frameworks */,
 				815651E81BDEC45B00ADBE30 /* AudioToolbox.framework in Frameworks */,
 				815651E91BDEC45B00ADBE30 /* StoreKit.framework in Frameworks */,
 				815651EA1BDEC45B00ADBE30 /* libsqlite3.dylib in Frameworks */,
@@ -2395,6 +2409,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		81C3821819CCA89E0066284A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81F156EE1BDEDD4D00610FC5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2571,6 +2592,7 @@
 				814915CB1B66D44500EFD14F /* Unit */,
 				810ECC6A1B573C6B002944D4 /* Other */,
 				810ECC601B573B96002944D4 /* Resources */,
+				81F1570B1BDEDE0500610FC5 /* TestApplication */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2598,6 +2620,7 @@
 				810156691BB3832700D7C7BD /* Parse.framework */,
 				815F24151BD04D150054659F /* Parse.framework */,
 				815651F41BDEC45B00ADBE30 /* ParseUnitTests-tvOS.xctest */,
+				81F156F11BDEDD4D00610FC5 /* ParseTestApplication.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3776,6 +3799,23 @@
 			path = CurrentUserController;
 			sourceTree = "<group>";
 		};
+		81F1570B1BDEDE0500610FC5 /* TestApplication */ = {
+			isa = PBXGroup;
+			children = (
+				81F1570C1BDEDE0500610FC5 /* tvOS */,
+			);
+			path = TestApplication;
+			sourceTree = "<group>";
+		};
+		81F1570C1BDEDE0500610FC5 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				81F1570D1BDEDE0500610FC5 /* Info.plist */,
+				81F1570E1BDEDE0500610FC5 /* main.m */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
 		F50C66301B33A6CE001941A6 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
@@ -3826,6 +3866,7 @@
 				F55ABB591B4F39DA00A0ECD5 /* ParseUnitTests-iOS.xcconfig */,
 				F55ABB5A1B4F39DA00A0ECD5 /* ParseUnitTests-OSX.xcconfig */,
 				815651FD1BDEC47D00ADBE30 /* ParseUnitTests-tvOS.xcconfig */,
+				81F157111BDEDE2F00610FC5 /* ParseTestApplication-tvOS.xcconfig */,
 				812F31FB1BCF40DC00FCBCD4 /* Bolts-iOS.xcconfig */,
 				812F31FC1BCF40DC00FCBCD4 /* Bolts-OSX.xcconfig */,
 				815F24191BD04DB70054659F /* Bolts-tvOS.xcconfig */,
@@ -4795,6 +4836,7 @@
 			dependencies = (
 				815652011BDEC48E00ADBE30 /* PBXTargetDependency */,
 				815651FF1BDEC48700ADBE30 /* PBXTargetDependency */,
+				81F1570A1BDEDD5600610FC5 /* PBXTargetDependency */,
 			);
 			name = "ParseUnitTests-tvOS";
 			productName = ParseTests;
@@ -4880,6 +4922,23 @@
 			productReference = 81C3821C19CCA89E0066284A /* Parse.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		81F156F01BDEDD4D00610FC5 /* ParseTestApplication-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81F157081BDEDD4D00610FC5 /* Build configuration list for PBXNativeTarget "ParseTestApplication-tvOS" */;
+			buildPhases = (
+				81F156ED1BDEDD4D00610FC5 /* Sources */,
+				81F156EE1BDEDD4D00610FC5 /* Frameworks */,
+				81F156EF1BDEDD4D00610FC5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ParseTestApplication-tvOS";
+			productName = "ParseTestApplication-tvOS";
+			productReference = 81F156F11BDEDD4D00610FC5 /* ParseTestApplication.app */;
+			productType = "com.apple.product-type.application";
+		};
 		97010FAB1630B18F00AB761E /* Parse-OSX */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97010FB41630B18F00AB761E /* Build configuration list for PBXNativeTarget "Parse-OSX" */;
@@ -4913,8 +4972,14 @@
 					81493A931A0D3492008D5504 = {
 						CreatedOnToolsVersion = 6.1;
 					};
+					8156516E1BDEC45B00ADBE30 = {
+						TestTargetID = 81F156F01BDEDD4D00610FC5;
+					};
 					81C3821B19CCA89E0066284A = {
 						CreatedOnToolsVersion = 6.0.1;
+					};
+					81F156F01BDEDD4D00610FC5 = {
+						CreatedOnToolsVersion = 7.1;
 					};
 				};
 			};
@@ -4943,6 +5008,7 @@
 				81C09F501AF97A490043B49C /* ParseUnitTests-OSX */,
 				815F22AF1BD04D150054659F /* Parse-tvOS */,
 				8156516E1BDEC45B00ADBE30 /* ParseUnitTests-tvOS */,
+				81F156F01BDEDD4D00610FC5 /* ParseTestApplication-tvOS */,
 				810155051BB3832700D7C7BD /* Parse-watchOS */,
 				F569F07A1B14DB1E00296F73 /* Bolts-iOS */,
 				81493A931A0D3492008D5504 /* Bolts-OSX */,
@@ -5049,6 +5115,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		81C09F821AF97A490043B49C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81F156EF1BDEDD4D00610FC5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -5286,7 +5359,6 @@
 				815651911BDEC45B00ADBE30 /* QueryUnitTests.m in Sources */,
 				815651921BDEC45B00ADBE30 /* URLSessionDataTaskDelegateTests.m in Sources */,
 				815651941BDEC45B00ADBE30 /* ObjectUtilitiesTests.m in Sources */,
-				815651961BDEC45B00ADBE30 /* ProductTests.m in Sources */,
 				815651971BDEC45B00ADBE30 /* URLSessionTests.m in Sources */,
 				815651981BDEC45B00ADBE30 /* CloudCommandTests.m in Sources */,
 				815651991BDEC45B00ADBE30 /* AnalyticsControllerTests.m in Sources */,
@@ -5327,6 +5399,7 @@
 				815651C11BDEC45B00ADBE30 /* FieldOperationTests.m in Sources */,
 				815651C21BDEC45B00ADBE30 /* ParseModuleUnitTests.m in Sources */,
 				815651C31BDEC45B00ADBE30 /* ObjectSubclassTests.m in Sources */,
+				81F157121BDEDEB000610FC5 /* ProductTests.m in Sources */,
 				815651C51BDEC45B00ADBE30 /* SessionControllerTests.m in Sources */,
 				815651C71BDEC45B00ADBE30 /* GeoPointUnitTests.m in Sources */,
 				815651C81BDEC45B00ADBE30 /* InstallationIdentifierUnitTests.m in Sources */,
@@ -5889,6 +5962,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		81F156ED1BDEDD4D00610FC5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81F157101BDEDE0500610FC5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97010FA81630B18F00AB761E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6080,6 +6161,11 @@
 			name = OCMock;
 			targetProxy = 81AB68C71B7E7F2A0053210E /* PBXContainerItemProxy */;
 		};
+		81F1570A1BDEDD5600610FC5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81F156F01BDEDD4D00610FC5 /* ParseTestApplication-tvOS */;
+			targetProxy = 81F157091BDEDD5600610FC5 /* PBXContainerItemProxy */;
+		};
 		F569F07F1B14DB3C00296F73 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F569F07A1B14DB1E00296F73 /* Bolts-iOS */;
@@ -6161,6 +6247,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 815651FD1BDEC47D00ADBE30 /* ParseUnitTests-tvOS.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParseTestApplication.app/ParseTestApplication";
 			};
 			name = Debug;
 		};
@@ -6168,6 +6256,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 815651FD1BDEC47D00ADBE30 /* ParseUnitTests-tvOS.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParseTestApplication.app/ParseTestApplication";
 			};
 			name = Release;
 		};
@@ -6239,6 +6329,20 @@
 		81C3823519CCA89F0066284A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F55ABB531B4F39DA00A0ECD5 /* Parse-iOS.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		81F157021BDEDD4D00610FC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81F157111BDEDE2F00610FC5 /* ParseTestApplication-tvOS.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		81F157031BDEDD4D00610FC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81F157111BDEDE2F00610FC5 /* ParseTestApplication-tvOS.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -6363,6 +6467,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		81F157081BDEDD4D00610FC5 /* Build configuration list for PBXNativeTarget "ParseTestApplication-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81F157021BDEDD4D00610FC5 /* Debug */,
+				81F157031BDEDD4D00610FC5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		97010FB41630B18F00AB761E /* Build configuration list for PBXNativeTarget "Parse-OSX" */ = {
 			isa = XCConfigurationList;
