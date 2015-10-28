@@ -750,8 +750,6 @@
 		815651E81BDEC45B00ADBE30 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095ACE9913C69BF700566243 /* AudioToolbox.framework */; };
 		815651E91BDEC45B00ADBE30 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498C29FE1551DC450034BB80 /* StoreKit.framework */; };
 		815651EA1BDEC45B00ADBE30 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393F38B15D3018400C4F78D /* libsqlite3.dylib */; };
-		815651EB1BDEC45B00ADBE30 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CA84EA1612660F002E09F8 /* Accounts.framework */; };
-		815651EC1BDEC45B00ADBE30 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CBA36B1612829C0062C84A /* Social.framework */; };
 		815651ED1BDEC45B00ADBE30 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103FA42198FC25B000BAE3F /* Bolts.framework */; };
 		815651EE1BDEC45B00ADBE30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B0B3141B44A21100F3EBC4 /* SystemConfiguration.framework */; };
 		815652031BDEC54C00ADBE30 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815F24151BD04D150054659F /* Parse.framework */; };
@@ -2366,8 +2364,6 @@
 				815651E81BDEC45B00ADBE30 /* AudioToolbox.framework in Frameworks */,
 				815651E91BDEC45B00ADBE30 /* StoreKit.framework in Frameworks */,
 				815651EA1BDEC45B00ADBE30 /* libsqlite3.dylib in Frameworks */,
-				815651EB1BDEC45B00ADBE30 /* Accounts.framework in Frameworks */,
-				815651EC1BDEC45B00ADBE30 /* Social.framework in Frameworks */,
 				815651ED1BDEC45B00ADBE30 /* Bolts.framework in Frameworks */,
 				815651EE1BDEC45B00ADBE30 /* SystemConfiguration.framework in Frameworks */,
 			);
@@ -4980,6 +4976,7 @@
 					};
 					81F156F01BDEDD4D00610FC5 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 8Y9HSHY4MP;
 					};
 				};
 			};
@@ -6337,6 +6334,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81F157111BDEDE2F00610FC5 /* ParseTestApplication-tvOS.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 			};
 			name = Debug;
 		};
@@ -6344,6 +6344,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81F157111BDEDE2F00610FC5 /* ParseTestApplication-tvOS.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 			};
 			name = Release;
 		};
@@ -6475,6 +6478,7 @@
 				81F157031BDEDD4D00610FC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		97010FB41630B18F00AB761E /* Build configuration list for PBXNativeTarget "Parse-OSX" */ = {
 			isa = XCConfigurationList;
