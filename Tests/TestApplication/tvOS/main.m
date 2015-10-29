@@ -9,6 +9,20 @@
 
 @import UIKit;
 
+@import XCTest;
+
+@interface XCTestLogObserver : NSObject
+
++ (instancetype)sharedInstance;
+
+@end
+
+@interface XCTestSuite(Private)
+
++ (instancetype)testSuiteWithBundle:(NSBundle *)bundle;
+
+@end
+
 @interface AppDelegate : NSObject <UIApplicationDelegate>
 
 @end
@@ -19,6 +33,13 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     window.rootViewController = [[UIViewController alloc] init];
     [window makeKeyAndVisible];
+
+    CFRunLoopPerformBlock(CFRunLoopGetMain(), kCFRunLoopDefaultMode, ^{
+        XCTestLogObserver *observer = [XCTestLogObserver sharedInstance];
+        XCTestSuite *suite = [XCTestSuite testSuiteWithBundle:[NSBundle mainBundle]];
+        [suite runTest];
+    });
+
     return YES;
 }
 

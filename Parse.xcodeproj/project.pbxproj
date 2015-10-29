@@ -1552,8 +1552,121 @@
 		F51D06351B792CF10044539E /* PFSQLiteDatabaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51D06331B792CF10044539E /* PFSQLiteDatabaseController.m */; };
 		F51D06371B793A110044539E /* PFSQLiteDatabase_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F51D06361B793A110044539E /* PFSQLiteDatabase_Private.h */; };
 		F51D06381B793A110044539E /* PFSQLiteDatabase_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F51D06361B793A110044539E /* PFSQLiteDatabase_Private.h */; };
+		F5422C821BE2CB8A004C9EE2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F55A7F011BE2C88D00458E79 /* XCTest.framework */; };
+		F5422C871BE2CE37004C9EE2 /* ACLStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915CC1B66D44500EFD14F /* ACLStateTests.m */; };
+		F5422C881BE2CE37004C9EE2 /* ACLUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915CD1B66D44500EFD14F /* ACLUnitTests.m */; };
+		F5422C8A1BE2CE37004C9EE2 /* AnalyticsCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915CF1B66D44500EFD14F /* AnalyticsCommandTests.m */; };
+		F5422C8B1BE2CE37004C9EE2 /* AnalyticsControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D01B66D44500EFD14F /* AnalyticsControllerTests.m */; };
+		F5422C8C1BE2CE37004C9EE2 /* AnalyticsUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D11B66D44500EFD14F /* AnalyticsUnitTests.m */; };
+		F5422C8D1BE2CE37004C9EE2 /* AnalyticsUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D21B66D44500EFD14F /* AnalyticsUtilitiesTests.m */; };
+		F5422C8E1BE2CE37004C9EE2 /* AnonymousAuthenticationProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D31B66D44500EFD14F /* AnonymousAuthenticationProviderTests.m */; };
+		F5422C8F1BE2CE37004C9EE2 /* AnonymousUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D41B66D44500EFD14F /* AnonymousUtilsTests.m */; };
+		F5422C901BE2CE37004C9EE2 /* BaseStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D51B66D44500EFD14F /* BaseStateTests.m */; };
+		F5422C911BE2CE37004C9EE2 /* CloudCodeControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D71B66D44500EFD14F /* CloudCodeControllerTests.m */; };
+		F5422C921BE2CE37004C9EE2 /* CloudCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D81B66D44500EFD14F /* CloudCommandTests.m */; };
+		F5422C931BE2CE37004C9EE2 /* CloudUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915D91B66D44500EFD14F /* CloudUnitTests.m */; };
+		F5422C941BE2CE37004C9EE2 /* CommandResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915DA1B66D44500EFD14F /* CommandResultTests.m */; };
+		F5422C951BE2CE37004C9EE2 /* CommandUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915DB1B66D44500EFD14F /* CommandUnitTests.m */; };
+		F5422C961BE2CE37004C9EE2 /* CommandURLRequestConstructorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915DC1B66D44500EFD14F /* CommandURLRequestConstructorTests.m */; };
+		F5422C971BE2CE37004C9EE2 /* ConfigCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915DD1B66D44500EFD14F /* ConfigCommandTests.m */; };
+		F5422C981BE2CE37004C9EE2 /* ConfigControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915DE1B66D44500EFD14F /* ConfigControllerTests.m */; };
+		F5422C991BE2CE37004C9EE2 /* ConfigUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915DF1B66D44500EFD14F /* ConfigUnitTests.m */; };
+		F5422C9A1BE2CE37004C9EE2 /* CurrentConfigControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915E01B66D44500EFD14F /* CurrentConfigControllerTests.m */; };
+		F5422C9B1BE2CE37004C9EE2 /* DateFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915E11B66D44500EFD14F /* DateFormatterTests.m */; };
+		F5422C9C1BE2CE37004C9EE2 /* DecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915E21B66D44500EFD14F /* DecoderTests.m */; };
+		F5422C9D1BE2CE37004C9EE2 /* DefaultACLControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915E31B66D44500EFD14F /* DefaultACLControllerTests.m */; };
+		F5422C9E1BE2CE37004C9EE2 /* DeviceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915E41B66D44500EFD14F /* DeviceTests.m */; };
+		F5422CA11BE2CE37004C9EE2 /* FieldOperationDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915E71B66D44500EFD14F /* FieldOperationDecoderTests.m */; };
+		F5422CA21BE2CE37004C9EE2 /* FieldOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915E81B66D44500EFD14F /* FieldOperationTests.m */; };
+		F5422CA31BE2CE37004C9EE2 /* FileCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915E91B66D44500EFD14F /* FileCommandTests.m */; };
+		F5422CA41BE2CE37004C9EE2 /* FileControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915EA1B66D44500EFD14F /* FileControllerTests.m */; };
+		F5422CA51BE2CE37004C9EE2 /* FileStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915EB1B66D44500EFD14F /* FileStateTests.m */; };
+		F5422CA61BE2CE37004C9EE2 /* FileUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915EC1B66D44500EFD14F /* FileUnitTests.m */; };
+		F5422CA71BE2CE37004C9EE2 /* GeoPointLocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915ED1B66D44500EFD14F /* GeoPointLocationTests.m */; };
+		F5422CA81BE2CE37004C9EE2 /* GeoPointUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915EE1B66D44500EFD14F /* GeoPointUnitTests.m */; };
+		F5422CA91BE2CE37004C9EE2 /* HashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8E75F1B7323ED004B014C /* HashTests.m */; };
+		F5422CAA1BE2CE37004C9EE2 /* IncrementUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915EF1B66D44500EFD14F /* IncrementUnitTests.m */; };
+		F5422CAB1BE2CE37004C9EE2 /* InstallationIdentifierUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F01B66D44500EFD14F /* InstallationIdentifierUnitTests.m */; };
+		F5422CAD1BE2CE37004C9EE2 /* KeychainStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F21B66D44500EFD14F /* KeychainStoreTests.m */; };
+		F5422CAE1BE2CE37004C9EE2 /* KeyValueCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F31B66D44500EFD14F /* KeyValueCacheTests.m */; };
+		F5422CAF1BE2CE37004C9EE2 /* LocationManagerMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F41B66D44500EFD14F /* LocationManagerMobileTests.m */; };
+		F5422CB01BE2CE37004C9EE2 /* LocationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F51B66D44500EFD14F /* LocationManagerTests.m */; };
+		F5422CB11BE2CE37004C9EE2 /* FileDataStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F57E29B11BA388DD00A2C59D /* FileDataStreamTests.m */; };
+		F5422CB21BE2CE37004C9EE2 /* ObjectBatchCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F61B66D44500EFD14F /* ObjectBatchCommandTests.m */; };
+		F5422CB31BE2CE37004C9EE2 /* ObjectBatchControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F71B66D44500EFD14F /* ObjectBatchControllerTests.m */; };
+		F5422CB41BE2CE37004C9EE2 /* ObjectCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F81B66D44500EFD14F /* ObjectCommandTests.m */; };
+		F5422CB51BE2CE37004C9EE2 /* ObjectEstimatedDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915F91B66D44500EFD14F /* ObjectEstimatedDataTests.m */; };
+		F5422CB61BE2CE37004C9EE2 /* ObjectFileCoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915FA1B66D44500EFD14F /* ObjectFileCoderTests.m */; };
+		F5422CB71BE2CE37004C9EE2 /* ObjectFileCodingLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915FB1B66D44500EFD14F /* ObjectFileCodingLogicTests.m */; };
+		F5422CB81BE2CE37004C9EE2 /* ObjectFilePersistenceControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 811AAF171B72D7E400B1AC1F /* ObjectFilePersistenceControllerTests.m */; };
+		F5422CB91BE2CE37004C9EE2 /* ObjectLocalIdStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915FC1B66D44500EFD14F /* ObjectLocalIdStoreTests.m */; };
+		F5422CBA1BE2CE37004C9EE2 /* ObjectOfflineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915FD1B66D44500EFD14F /* ObjectOfflineTests.m */; };
+		F5422CBB1BE2CE37004C9EE2 /* ObjectPinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915FE1B66D44500EFD14F /* ObjectPinTests.m */; };
+		F5422CBC1BE2CE37004C9EE2 /* ObjectStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814915FF1B66D44500EFD14F /* ObjectStateTests.m */; };
+		F5422CBD1BE2CE37004C9EE2 /* ObjectSubclassingControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916001B66D44500EFD14F /* ObjectSubclassingControllerTests.m */; };
+		F5422CBE1BE2CE37004C9EE2 /* ObjectSubclassPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916011B66D44500EFD14F /* ObjectSubclassPropertiesTests.m */; };
+		F5422CBF1BE2CE37004C9EE2 /* ObjectSubclassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916021B66D44500EFD14F /* ObjectSubclassTests.m */; };
+		F5422CC01BE2CE37004C9EE2 /* ObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916031B66D44500EFD14F /* ObjectUnitTests.m */; };
+		F5422CC11BE2CE37004C9EE2 /* ObjectUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916041B66D44500EFD14F /* ObjectUtilitiesTests.m */; };
+		F5422CC21BE2CE37004C9EE2 /* OfflineQueryControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916051B66D44500EFD14F /* OfflineQueryControllerTests.m */; };
+		F5422CC31BE2CE37004C9EE2 /* OfflineQueryLogicUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916061B66D44500EFD14F /* OfflineQueryLogicUnitTests.m */; };
+		F5422CC41BE2CE37004C9EE2 /* OperationSetUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916071B66D44500EFD14F /* OperationSetUnitTests.m */; };
+		F5422CC51BE2CE37004C9EE2 /* ParseModuleUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916081B66D44500EFD14F /* ParseModuleUnitTests.m */; };
+		F5422CC61BE2CE37004C9EE2 /* ParseSetupUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916091B66D44500EFD14F /* ParseSetupUnitTests.m */; };
+		F5422CC71BE2CE37004C9EE2 /* PinningObjectStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149160A1B66D44500EFD14F /* PinningObjectStoreTests.m */; };
+		F5422CC81BE2CE37004C9EE2 /* PinUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149160B1B66D44500EFD14F /* PinUnitTests.m */; };
+		F5422CC91BE2CE37004C9EE2 /* ProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149160C1B66D44500EFD14F /* ProductTests.m */; };
+		F5422CCA1BE2CE37004C9EE2 /* PropertyInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149160D1B66D44500EFD14F /* PropertyInfoTests.m */; };
+		F5422CCB1BE2CE37004C9EE2 /* PurchaseControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149160E1B66D44500EFD14F /* PurchaseControllerTests.m */; };
+		F5422CCC1BE2CE37004C9EE2 /* PurchaseUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149160F1B66D44500EFD14F /* PurchaseUnitTests.m */; };
+		F5422CD41BE2CE37004C9EE2 /* QueryCachedControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916171B66D44500EFD14F /* QueryCachedControllerTests.m */; };
+		F5422CD51BE2CE37004C9EE2 /* QueryControllerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916181B66D44500EFD14F /* QueryControllerUnitTests.m */; };
+		F5422CD61BE2CE37004C9EE2 /* QueryPredicateUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916191B66D44500EFD14F /* QueryPredicateUnitTests.m */; };
+		F5422CD71BE2CE37004C9EE2 /* QueryStateUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149161A1B66D44500EFD14F /* QueryStateUnitTests.m */; };
+		F5422CD81BE2CE37004C9EE2 /* QueryUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149161B1B66D44500EFD14F /* QueryUnitTests.m */; };
+		F5422CD91BE2CE37004C9EE2 /* QueryUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149161C1B66D44500EFD14F /* QueryUtilitiesTests.m */; };
+		F5422CDA1BE2CE37004C9EE2 /* RelationStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149161D1B66D44500EFD14F /* RelationStateTests.m */; };
+		F5422CDB1BE2CE37004C9EE2 /* RelationUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149161E1B66D44500EFD14F /* RelationUnitTests.m */; };
+		F5422CDC1BE2CE37004C9EE2 /* RoleUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8149161F1B66D44500EFD14F /* RoleUnitTests.m */; };
+		F5422CDD1BE2CE37004C9EE2 /* SessionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916201B66D44500EFD14F /* SessionControllerTests.m */; };
+		F5422CDE1BE2CE37004C9EE2 /* SessionUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916211B66D44500EFD14F /* SessionUnitTests.m */; };
+		F5422CDF1BE2CE37004C9EE2 /* SessionUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916221B66D44500EFD14F /* SessionUtilitiesTests.m */; };
+		F5422CE01BE2CE37004C9EE2 /* SQLiteDatabaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916231B66D44500EFD14F /* SQLiteDatabaseTest.m */; };
+		F5422CE11BE2CE37004C9EE2 /* URLSessionCommandRunnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916241B66D44500EFD14F /* URLSessionCommandRunnerTests.m */; };
+		F5422CE21BE2CE37004C9EE2 /* URLSessionDataTaskDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5732DE01B6712140066DCD5 /* URLSessionDataTaskDelegateTests.m */; };
+		F5422CE31BE2CE37004C9EE2 /* URLSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5556A141B66F36000410837 /* URLSessionTests.m */; };
+		F5422CE41BE2CE37004C9EE2 /* URLSessionUploadTaskDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E381331B696C2F00A3B9F2 /* URLSessionUploadTaskDelegateTests.m */; };
+		F5422CE51BE2CE37004C9EE2 /* UserCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916251B66D44500EFD14F /* UserCommandTests.m */; };
+		F5422CE61BE2CE37004C9EE2 /* UserControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916261B66D44500EFD14F /* UserControllerTests.m */; };
+		F5422CE71BE2CE37004C9EE2 /* UserFileCodingLogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916271B66D44500EFD14F /* UserFileCodingLogicTests.m */; };
+		F5422CE81BE2CE37004C9EE2 /* UserUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 814916281B66D44500EFD14F /* UserUnitTests.m */; };
+		F5422CE91BE2CE9C004C9EE2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103FA42198FC25B000BAE3F /* Bolts.framework */; };
+		F5422CEA1BE2CEF7004C9EE2 /* SwiftSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810ECC6E1B573C6B002944D4 /* SwiftSubclass.swift */; };
+		F5422CEB1BE2CF3B004C9EE2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815F24151BD04D150054659F /* Parse.framework */; };
+		F5422CED1BE2CF44004C9EE2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5422CEC1BE2CF44004C9EE2 /* SystemConfiguration.framework */; };
+		F5422CEF1BE2CF48004C9EE2 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F5422CEE1BE2CF48004C9EE2 /* libsqlite3.0.tbd */; };
+		F5422CF01BE2CF56004C9EE2 /* PFMockURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E033571B573F3E00B25168 /* PFMockURLProtocol.m */; };
+		F5422CF11BE2CF59004C9EE2 /* PFMockURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E033591B573F3E00B25168 /* PFMockURLResponse.m */; };
+		F5422CF21BE2CF5F004C9EE2 /* PFTestSKPaymentQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E033651B573FC500B25168 /* PFTestSKPaymentQueue.m */; };
+		F5422CF31BE2CF5F004C9EE2 /* PFTestSKPaymentTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E033671B573FC500B25168 /* PFTestSKPaymentTransaction.m */; };
+		F5422CF41BE2CF5F004C9EE2 /* PFTestSKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E033691B573FC500B25168 /* PFTestSKProduct.m */; };
+		F5422CF51BE2CF5F004C9EE2 /* PFTestSKProductsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E0336B1B573FC500B25168 /* PFTestSKProductsRequest.m */; };
+		F5422CF61BE2CF5F004C9EE2 /* PFTestSKProductsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E0336D1B573FC500B25168 /* PFTestSKProductsResponse.m */; };
+		F5422CF71BE2CF67004C9EE2 /* OCMock+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 810ECC731B573CC5002944D4 /* OCMock+Parse.m */; };
+		F5422CF81BE2CF6E004C9EE2 /* CLLocationManager+TestAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E0337D1B57441F00B25168 /* CLLocationManager+TestAdditions.m */; };
+		F5422CF91BE2CF74004C9EE2 /* TestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADB9CA1B6C5047002A819E /* TestCache.m */; };
+		F5422CFA1BE2CF7C004C9EE2 /* TestFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADB9C61B6C503E002A819E /* TestFileManager.m */; };
+		F5422CFB1BE2CF7E004C9EE2 /* TestFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ADB9C61B6C503E002A819E /* TestFileManager.m */; };
+		F5422CFC1BE2CF8E004C9EE2 /* PFTestSwizzledMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 81308B6C1B5781F500FFFF44 /* PFTestSwizzledMethod.m */; };
+		F5422CFD1BE2CF8E004C9EE2 /* PFTestSwizzlingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81308B6E1B5781F500FFFF44 /* PFTestSwizzlingUtilities.m */; };
+		F5422CFE1BE2CF94004C9EE2 /* PFTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 810ECC791B573D28002944D4 /* PFTestCase.m */; };
+		F5422CFF1BE2CF94004C9EE2 /* PFUnitTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 810ECC7C1B573D28002944D4 /* PFUnitTestCase.m */; };
+		F5422D001BE2CFA4004C9EE2 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815651FC1BDEC45B00ADBE30 /* OCMock.framework */; };
+		F5422D021BE2CFAF004C9EE2 /* OCMock.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 815651FC1BDEC45B00ADBE30 /* OCMock.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5556A181B66F47900410837 /* PFURLSession_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F5556A171B66F47900410837 /* PFURLSession_Private.h */; };
 		F5556A191B66F47900410837 /* PFURLSession_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F5556A171B66F47900410837 /* PFURLSession_Private.h */; };
+		F55A7F1B1BE2CAAE00458E79 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F55A7F011BE2C88D00458E79 /* XCTest.framework */; };
+		F55A7F1C1BE2CAAE00458E79 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F55A7F011BE2C88D00458E79 /* XCTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F55C740C1B631557000EDAFA /* PFURLSessionCommandRunner_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F55C740B1B631557000EDAFA /* PFURLSessionCommandRunner_Private.h */; };
 		F55C740D1B631557000EDAFA /* PFURLSessionCommandRunner_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F55C740B1B631557000EDAFA /* PFURLSessionCommandRunner_Private.h */; };
 		F5732DE11B6712140066DCD5 /* URLSessionDataTaskDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5732DE01B6712140066DCD5 /* URLSessionDataTaskDelegateTests.m */; };
@@ -1638,6 +1751,7 @@
 		F5C6B38B1B83F7A100690F3A /* PFFileStagingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50E486D1B83ED270055094D /* PFFileStagingController.m */; };
 		F5C8F2C01B1F7E7800CD98E7 /* PFAsyncTaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8F2BF1B1F7E6B00CD98E7 /* PFAsyncTaskQueue.m */; };
 		F5C8F2C11B1F7E7900CD98E7 /* PFAsyncTaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8F2BF1B1F7E6B00CD98E7 /* PFAsyncTaskQueue.m */; };
+		F5CBD3C21BE1BBAA003D762D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CBD3C11BE1BBAA003D762D /* UIKit.framework */; };
 		F5E381311B68832000A3B9F2 /* URLSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5556A141B66F36000410837 /* URLSessionTests.m */; };
 		F5E381321B68832100A3B9F2 /* URLSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5556A141B66F36000410837 /* URLSessionTests.m */; };
 		F5E381341B696C2F00A3B9F2 /* URLSessionUploadTaskDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E381331B696C2F00A3B9F2 /* URLSessionUploadTaskDelegateTests.m */; };
@@ -1758,6 +1872,41 @@
 			remoteGlobalIDString = 81F156F01BDEDD4D00610FC5;
 			remoteInfo = "ParseTestApplication-tvOS";
 		};
+		F5422D031BE2CFAF004C9EE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81AB68AE1B7E7ECC0053210E /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 817EB1151BD765130047E85A;
+			remoteInfo = "OCMock tvOS";
+		};
+		F55A7F001BE2C88D00458E79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F55A7EFA1BE2C88D00458E79 /* WKTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F5C882E01BA8948400E44C48;
+			remoteInfo = WKTest;
+		};
+		F55A7F021BE2C88D00458E79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F55A7EFA1BE2C88D00458E79 /* WKTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F5B91A801BA897FA00EBCB84;
+			remoteInfo = WKTestTests;
+		};
+		F55A7F041BE2C88D00458E79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F55A7EFA1BE2C88D00458E79 /* WKTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F571D71A1BA8BB4500687A0B;
+			remoteInfo = WKTestRunner;
+		};
+		F55A7F1D1BE2CAAE00458E79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F55A7EFA1BE2C88D00458E79 /* WKTest.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F5C882DF1BA8948400E44C48;
+			remoteInfo = WKTest;
+		};
 		F569F07E1B14DB3C00296F73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 09D33641139C54930098E916 /* Project object */;
@@ -1799,6 +1948,18 @@
 				81C09F8D1AF9816D0043B49C /* Bolts.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F55A7EF81BE2C57700458E79 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5422D021BE2CFAF004C9EE2 /* OCMock.framework in Embed Frameworks */,
+				F55A7F1C1BE2CAAE00458E79 /* XCTest.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -2303,8 +2464,11 @@
 		F51D06321B792CF10044539E /* PFSQLiteDatabaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFSQLiteDatabaseController.h; sourceTree = "<group>"; };
 		F51D06331B792CF10044539E /* PFSQLiteDatabaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFSQLiteDatabaseController.m; sourceTree = "<group>"; };
 		F51D06361B793A110044539E /* PFSQLiteDatabase_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFSQLiteDatabase_Private.h; sourceTree = "<group>"; };
+		F5422CEC1BE2CF44004C9EE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS9.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		F5422CEE1BE2CF48004C9EE2 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS9.0.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		F5556A141B66F36000410837 /* URLSessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSessionTests.m; sourceTree = "<group>"; };
 		F5556A171B66F47900410837 /* PFURLSession_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFURLSession_Private.h; sourceTree = "<group>"; };
+		F55A7EFA1BE2C88D00458E79 /* WKTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WKTest.xcodeproj; path = Vendor/WKTest/WKTest.xcodeproj; sourceTree = "<group>"; };
 		F55ABB531B4F39DA00A0ECD5 /* Parse-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Parse-iOS.xcconfig"; sourceTree = "<group>"; };
 		F55ABB541B4F39DA00A0ECD5 /* Parse-OSX.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Parse-OSX.xcconfig"; sourceTree = "<group>"; };
 		F55ABB591B4F39DA00A0ECD5 /* ParseUnitTests-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ParseUnitTests-iOS.xcconfig"; sourceTree = "<group>"; };
@@ -2339,6 +2503,7 @@
 		F5C42CD91B38761B00C720D8 /* PFObjectSubclassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFObjectSubclassInfo.m; sourceTree = "<group>"; };
 		F5C8F2BE1B1F7E6B00CD98E7 /* PFAsyncTaskQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFAsyncTaskQueue.h; sourceTree = "<group>"; };
 		F5C8F2BF1B1F7E6B00CD98E7 /* PFAsyncTaskQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFAsyncTaskQueue.m; sourceTree = "<group>"; };
+		F5CBD3C11BE1BBAA003D762D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F5E381331B696C2F00A3B9F2 /* URLSessionUploadTaskDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSessionUploadTaskDelegateTests.m; sourceTree = "<group>"; };
 		F5E8DE171B290FFF00EEA594 /* PFRelationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFRelationState.h; sourceTree = "<group>"; };
 		F5E8DE181B290FFF00EEA594 /* PFRelationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFRelationState.m; sourceTree = "<group>"; };
@@ -2359,6 +2524,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5422C821BE2CB8A004C9EE2 /* XCTest.framework in Frameworks */,
 				815652071BDEC92800ADBE30 /* OCMock.framework in Frameworks */,
 				815652031BDEC54C00ADBE30 /* Parse.framework in Frameworks */,
 				815651E81BDEC45B00ADBE30 /* AudioToolbox.framework in Frameworks */,
@@ -2415,6 +2581,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5422D001BE2CFA4004C9EE2 /* OCMock.framework in Frameworks */,
+				F5422CEF1BE2CF48004C9EE2 /* libsqlite3.0.tbd in Frameworks */,
+				F5422CED1BE2CF44004C9EE2 /* SystemConfiguration.framework in Frameworks */,
+				F5422CEB1BE2CF3B004C9EE2 /* Parse.framework in Frameworks */,
+				F5422CE91BE2CE9C004C9EE2 /* Bolts.framework in Frameworks */,
+				F55A7F1B1BE2CAAE00458E79 /* XCTest.framework in Frameworks */,
+				F5CBD3C21BE1BBAA003D762D /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2596,6 +2769,7 @@
 		09D3363F139C54930098E916 = {
 			isa = PBXGroup;
 			children = (
+				F55A7EF91BE2C88500458E79 /* WKTest */,
 				F55ABB501B4F39DA00A0ECD5 /* Configurations */,
 				0925ABB613D791770095FEFA /* Parse */,
 				099C082113AC013900D71869 /* Tests */,
@@ -2624,6 +2798,9 @@
 		09D3364C139C54940098E916 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5422CEE1BE2CF48004C9EE2 /* libsqlite3.0.tbd */,
+				F5422CEC1BE2CF44004C9EE2 /* SystemConfiguration.framework */,
+				F5CBD3C11BE1BBAA003D762D /* UIKit.framework */,
 				8103FA47198FC304000BAE3F /* Bolts */,
 				81AFA6781B0ECF9B000763C0 /* OCMock */,
 				813E97A91A26A76A00373BA7 /* System Frameworks */,
@@ -3852,6 +4029,24 @@
 			path = DefaultACLController;
 			sourceTree = "<group>";
 		};
+		F55A7EF91BE2C88500458E79 /* WKTest */ = {
+			isa = PBXGroup;
+			children = (
+				F55A7EFA1BE2C88D00458E79 /* WKTest.xcodeproj */,
+			);
+			name = WKTest;
+			sourceTree = "<group>";
+		};
+		F55A7EFB1BE2C88D00458E79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F55A7F011BE2C88D00458E79 /* XCTest.framework */,
+				F55A7F031BE2C88D00458E79 /* WKTestTests.xctest */,
+				F55A7F051BE2C88D00458E79 /* xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F55ABB501B4F39DA00A0ECD5 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -4925,10 +5120,13 @@
 				81F156ED1BDEDD4D00610FC5 /* Sources */,
 				81F156EE1BDEDD4D00610FC5 /* Frameworks */,
 				81F156EF1BDEDD4D00610FC5 /* Resources */,
+				F55A7EF81BE2C57700458E79 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F55A7F1E1BE2CAAE00458E79 /* PBXTargetDependency */,
+				F5422D041BE2CFAF004C9EE2 /* PBXTargetDependency */,
 			);
 			name = "ParseTestApplication-tvOS";
 			productName = "ParseTestApplication-tvOS";
@@ -4968,15 +5166,12 @@
 					81493A931A0D3492008D5504 = {
 						CreatedOnToolsVersion = 6.1;
 					};
-					8156516E1BDEC45B00ADBE30 = {
-						TestTargetID = 81F156F01BDEDD4D00610FC5;
-					};
 					81C3821B19CCA89E0066284A = {
 						CreatedOnToolsVersion = 6.0.1;
 					};
 					81F156F01BDEDD4D00610FC5 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 8Y9HSHY4MP;
+						DevelopmentTeam = 289LFBE5L8;
 					};
 				};
 			};
@@ -4995,6 +5190,10 @@
 				{
 					ProductGroup = 81AB68AF1B7E7ECC0053210E /* Products */;
 					ProjectRef = 81AB68AE1B7E7ECC0053210E /* OCMock.xcodeproj */;
+				},
+				{
+					ProductGroup = F55A7EFB1BE2C88D00458E79 /* Products */;
+					ProjectRef = F55A7EFA1BE2C88D00458E79 /* WKTest.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -5056,6 +5255,27 @@
 			fileType = wrapper.framework;
 			path = OCMock.framework;
 			remoteRef = 81AB68BE1B7E7ECC0053210E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F55A7F011BE2C88D00458E79 /* XCTest.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCTest.framework;
+			remoteRef = F55A7F001BE2C88D00458E79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F55A7F031BE2C88D00458E79 /* WKTestTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WKTestTests.xctest;
+			remoteRef = F55A7F021BE2C88D00458E79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F55A7F051BE2C88D00458E79 /* xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = xctest;
+			remoteRef = F55A7F041BE2C88D00458E79 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -5214,6 +5434,7 @@
 				8101551F1BB3832700D7C7BD /* PFCategoryLoader.m in Sources */,
 				810155201BB3832700D7C7BD /* PFUserAuthenticationController.m in Sources */,
 				810155211BB3832700D7C7BD /* PFRelationState.m in Sources */,
+				F5422CFB1BE2CF7E004C9EE2 /* TestFileManager.m in Sources */,
 				810155221BB3832700D7C7BD /* ParseManager.m in Sources */,
 				810155241BB3832700D7C7BD /* PFAnalyticsController.m in Sources */,
 				810155251BB3832700D7C7BD /* PFURLSessionDataTaskDelegate.m in Sources */,
@@ -5963,7 +6184,110 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5422CC21BE2CE37004C9EE2 /* OfflineQueryControllerTests.m in Sources */,
+				F5422CE41BE2CE37004C9EE2 /* URLSessionUploadTaskDelegateTests.m in Sources */,
+				F5422C901BE2CE37004C9EE2 /* BaseStateTests.m in Sources */,
+				F5422CF81BE2CF6E004C9EE2 /* CLLocationManager+TestAdditions.m in Sources */,
+				F5422CDF1BE2CE37004C9EE2 /* SessionUtilitiesTests.m in Sources */,
+				F5422CF21BE2CF5F004C9EE2 /* PFTestSKPaymentQueue.m in Sources */,
+				F5422CE81BE2CE37004C9EE2 /* UserUnitTests.m in Sources */,
+				F5422C8C1BE2CE37004C9EE2 /* AnalyticsUnitTests.m in Sources */,
+				F5422CDC1BE2CE37004C9EE2 /* RoleUnitTests.m in Sources */,
+				F5422CAE1BE2CE37004C9EE2 /* KeyValueCacheTests.m in Sources */,
+				F5422CC51BE2CE37004C9EE2 /* ParseModuleUnitTests.m in Sources */,
+				F5422C911BE2CE37004C9EE2 /* CloudCodeControllerTests.m in Sources */,
+				F5422CBD1BE2CE37004C9EE2 /* ObjectSubclassingControllerTests.m in Sources */,
+				F5422CE61BE2CE37004C9EE2 /* UserControllerTests.m in Sources */,
+				F5422C971BE2CE37004C9EE2 /* ConfigCommandTests.m in Sources */,
+				F5422C9B1BE2CE37004C9EE2 /* DateFormatterTests.m in Sources */,
+				F5422CB41BE2CE37004C9EE2 /* ObjectCommandTests.m in Sources */,
+				F5422CD61BE2CE37004C9EE2 /* QueryPredicateUnitTests.m in Sources */,
+				F5422C8A1BE2CE37004C9EE2 /* AnalyticsCommandTests.m in Sources */,
+				F5422CB51BE2CE37004C9EE2 /* ObjectEstimatedDataTests.m in Sources */,
+				F5422CF31BE2CF5F004C9EE2 /* PFTestSKPaymentTransaction.m in Sources */,
+				F5422CBC1BE2CE37004C9EE2 /* ObjectStateTests.m in Sources */,
+				F5422CE71BE2CE37004C9EE2 /* UserFileCodingLogicTests.m in Sources */,
+				F5422CBF1BE2CE37004C9EE2 /* ObjectSubclassTests.m in Sources */,
+				F5422CF51BE2CF5F004C9EE2 /* PFTestSKProductsRequest.m in Sources */,
+				F5422CFC1BE2CF8E004C9EE2 /* PFTestSwizzledMethod.m in Sources */,
+				F5422C991BE2CE37004C9EE2 /* ConfigUnitTests.m in Sources */,
+				F5422CC31BE2CE37004C9EE2 /* OfflineQueryLogicUnitTests.m in Sources */,
+				F5422CF91BE2CF74004C9EE2 /* TestCache.m in Sources */,
+				F5422CB31BE2CE37004C9EE2 /* ObjectBatchControllerTests.m in Sources */,
+				F5422CE21BE2CE37004C9EE2 /* URLSessionDataTaskDelegateTests.m in Sources */,
+				F5422C8E1BE2CE37004C9EE2 /* AnonymousAuthenticationProviderTests.m in Sources */,
+				F5422C871BE2CE37004C9EE2 /* ACLStateTests.m in Sources */,
+				F5422CE01BE2CE37004C9EE2 /* SQLiteDatabaseTest.m in Sources */,
+				F5422CE51BE2CE37004C9EE2 /* UserCommandTests.m in Sources */,
+				F5422CC41BE2CE37004C9EE2 /* OperationSetUnitTests.m in Sources */,
+				F5422CDA1BE2CE37004C9EE2 /* RelationStateTests.m in Sources */,
+				F5422CF11BE2CF59004C9EE2 /* PFMockURLResponse.m in Sources */,
+				F5422CFE1BE2CF94004C9EE2 /* PFTestCase.m in Sources */,
+				F5422C8D1BE2CE37004C9EE2 /* AnalyticsUtilitiesTests.m in Sources */,
+				F5422CA41BE2CE37004C9EE2 /* FileControllerTests.m in Sources */,
+				F5422CB81BE2CE37004C9EE2 /* ObjectFilePersistenceControllerTests.m in Sources */,
+				F5422C9C1BE2CE37004C9EE2 /* DecoderTests.m in Sources */,
 				81F157101BDEDE0500610FC5 /* main.m in Sources */,
+				F5422CCA1BE2CE37004C9EE2 /* PropertyInfoTests.m in Sources */,
+				F5422CF01BE2CF56004C9EE2 /* PFMockURLProtocol.m in Sources */,
+				F5422CA21BE2CE37004C9EE2 /* FieldOperationTests.m in Sources */,
+				F5422CB11BE2CE37004C9EE2 /* FileDataStreamTests.m in Sources */,
+				F5422CF61BE2CF5F004C9EE2 /* PFTestSKProductsResponse.m in Sources */,
+				F5422CCB1BE2CE37004C9EE2 /* PurchaseControllerTests.m in Sources */,
+				F5422CB71BE2CE37004C9EE2 /* ObjectFileCodingLogicTests.m in Sources */,
+				F5422C9E1BE2CE37004C9EE2 /* DeviceTests.m in Sources */,
+				F5422C8F1BE2CE37004C9EE2 /* AnonymousUtilsTests.m in Sources */,
+				F5422CF71BE2CF67004C9EE2 /* OCMock+Parse.m in Sources */,
+				F5422C921BE2CE37004C9EE2 /* CloudCommandTests.m in Sources */,
+				F5422CAF1BE2CE37004C9EE2 /* LocationManagerMobileTests.m in Sources */,
+				F5422CC81BE2CE37004C9EE2 /* PinUnitTests.m in Sources */,
+				F5422CC71BE2CE37004C9EE2 /* PinningObjectStoreTests.m in Sources */,
+				F5422CA11BE2CE37004C9EE2 /* FieldOperationDecoderTests.m in Sources */,
+				F5422CC91BE2CE37004C9EE2 /* ProductTests.m in Sources */,
+				F5422CD41BE2CE37004C9EE2 /* QueryCachedControllerTests.m in Sources */,
+				F5422CC11BE2CE37004C9EE2 /* ObjectUtilitiesTests.m in Sources */,
+				F5422CA31BE2CE37004C9EE2 /* FileCommandTests.m in Sources */,
+				F5422CC01BE2CE37004C9EE2 /* ObjectUnitTests.m in Sources */,
+				F5422CB21BE2CE37004C9EE2 /* ObjectBatchCommandTests.m in Sources */,
+				F5422CA91BE2CE37004C9EE2 /* HashTests.m in Sources */,
+				F5422CA71BE2CE37004C9EE2 /* GeoPointLocationTests.m in Sources */,
+				F5422CAA1BE2CE37004C9EE2 /* IncrementUnitTests.m in Sources */,
+				F5422CAB1BE2CE37004C9EE2 /* InstallationIdentifierUnitTests.m in Sources */,
+				F5422CFD1BE2CF8E004C9EE2 /* PFTestSwizzlingUtilities.m in Sources */,
+				F5422CB61BE2CE37004C9EE2 /* ObjectFileCoderTests.m in Sources */,
+				F5422CB01BE2CE37004C9EE2 /* LocationManagerTests.m in Sources */,
+				F5422CBB1BE2CE37004C9EE2 /* ObjectPinTests.m in Sources */,
+				F5422CA81BE2CE37004C9EE2 /* GeoPointUnitTests.m in Sources */,
+				F5422CB91BE2CE37004C9EE2 /* ObjectLocalIdStoreTests.m in Sources */,
+				F5422CA61BE2CE37004C9EE2 /* FileUnitTests.m in Sources */,
+				F5422CBE1BE2CE37004C9EE2 /* ObjectSubclassPropertiesTests.m in Sources */,
+				F5422C941BE2CE37004C9EE2 /* CommandResultTests.m in Sources */,
+				F5422CD51BE2CE37004C9EE2 /* QueryControllerUnitTests.m in Sources */,
+				F5422CDD1BE2CE37004C9EE2 /* SessionControllerTests.m in Sources */,
+				F5422CDE1BE2CE37004C9EE2 /* SessionUnitTests.m in Sources */,
+				F5422C961BE2CE37004C9EE2 /* CommandURLRequestConstructorTests.m in Sources */,
+				F5422CE31BE2CE37004C9EE2 /* URLSessionTests.m in Sources */,
+				F5422CD91BE2CE37004C9EE2 /* QueryUtilitiesTests.m in Sources */,
+				F5422CDB1BE2CE37004C9EE2 /* RelationUnitTests.m in Sources */,
+				F5422CFF1BE2CF94004C9EE2 /* PFUnitTestCase.m in Sources */,
+				F5422CF41BE2CF5F004C9EE2 /* PFTestSKProduct.m in Sources */,
+				F5422CFA1BE2CF7C004C9EE2 /* TestFileManager.m in Sources */,
+				F5422C8B1BE2CE37004C9EE2 /* AnalyticsControllerTests.m in Sources */,
+				F5422C9D1BE2CE37004C9EE2 /* DefaultACLControllerTests.m in Sources */,
+				F5422CD81BE2CE37004C9EE2 /* QueryUnitTests.m in Sources */,
+				F5422CE11BE2CE37004C9EE2 /* URLSessionCommandRunnerTests.m in Sources */,
+				F5422C881BE2CE37004C9EE2 /* ACLUnitTests.m in Sources */,
+				F5422C981BE2CE37004C9EE2 /* ConfigControllerTests.m in Sources */,
+				F5422CC61BE2CE37004C9EE2 /* ParseSetupUnitTests.m in Sources */,
+				F5422CBA1BE2CE37004C9EE2 /* ObjectOfflineTests.m in Sources */,
+				F5422CAD1BE2CE37004C9EE2 /* KeychainStoreTests.m in Sources */,
+				F5422C9A1BE2CE37004C9EE2 /* CurrentConfigControllerTests.m in Sources */,
+				F5422CEA1BE2CEF7004C9EE2 /* SwiftSubclass.swift in Sources */,
+				F5422CCC1BE2CE37004C9EE2 /* PurchaseUnitTests.m in Sources */,
+				F5422CD71BE2CE37004C9EE2 /* QueryStateUnitTests.m in Sources */,
+				F5422C931BE2CE37004C9EE2 /* CloudUnitTests.m in Sources */,
+				F5422C951BE2CE37004C9EE2 /* CommandUnitTests.m in Sources */,
+				F5422CA51BE2CE37004C9EE2 /* FileStateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6163,6 +6487,16 @@
 			target = 81F156F01BDEDD4D00610FC5 /* ParseTestApplication-tvOS */;
 			targetProxy = 81F157091BDEDD5600610FC5 /* PBXContainerItemProxy */;
 		};
+		F5422D041BE2CFAF004C9EE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OCMock tvOS";
+			targetProxy = F5422D031BE2CFAF004C9EE2 /* PBXContainerItemProxy */;
+		};
+		F55A7F1E1BE2CAAE00458E79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WKTest;
+			targetProxy = F55A7F1D1BE2CAAE00458E79 /* PBXContainerItemProxy */;
+		};
 		F569F07F1B14DB3C00296F73 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F569F07A1B14DB1E00296F73 /* Bolts-iOS */;
@@ -6244,8 +6578,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 815651FD1BDEC47D00ADBE30 /* ParseUnitTests-tvOS.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParseTestApplication.app/ParseTestApplication";
+				CLANG_MODULES_AUTOLINK = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 			};
 			name = Debug;
 		};
@@ -6253,8 +6590,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 815651FD1BDEC47D00ADBE30 /* ParseUnitTests-tvOS.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParseTestApplication.app/ParseTestApplication";
+				CLANG_MODULES_AUTOLINK = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 			};
 			name = Release;
 		};
@@ -6336,7 +6676,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CLANG_MODULES_AUTOLINK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Bolts-ObjC/build/tvos",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_MODULE_NAME = ParseUnitTests;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Tests/Other/Swift/ParseUnitTests-iOS-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -6346,7 +6694,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CLANG_MODULES_AUTOLINK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Bolts-ObjC/build/tvos",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_MODULE_NAME = ParseUnitTests;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Tests/Other/Swift/ParseUnitTests-iOS-Bridging-Header.h";
 			};
 			name = Release;
 		};
