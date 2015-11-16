@@ -37,22 +37,24 @@
 }
 
 - (void)tearDown {
-    [[Parse _currentManager] clearEventuallyQueue];
+    if ([Parse _currentManager]) {
+        [[Parse _currentManager] clearEventuallyQueue];
 
-    NSString *path = [[Parse _currentManager].fileManager parseLocalSandboxDataDirectoryPath];
+        NSString *path = [[Parse _currentManager].fileManager parseLocalSandboxDataDirectoryPath];
 
-    [Parse _clearCurrentManager];
-    [Parse _resetDataSharingIdentifiers];
+        [Parse _clearCurrentManager];
+        [Parse _resetDataSharingIdentifiers];
 
-    // This allows us to delete files while respecting file locks.
-    NSArray *removalTasks = @[
+        // This allows us to delete files while respecting file locks.
+        NSArray *removalTasks = @[
 #if TARGET_OS_IPHONE
-        // Doing this on OSX is BAD, as this returns ~/Library/Application Support. Trust me, you don't want to delete this.
-        [PFFileManager removeItemAtPathAsync:[PFExtensionDataSharingTestHelper sharedTestDirectoryPath]],
+            // Doing this on OSX is BAD, as this returns ~/Library/Application Support. Trust me, you don't want to delete this.
+            [PFFileManager removeItemAtPathAsync:[PFExtensionDataSharingTestHelper sharedTestDirectoryPath]],
 #endif
-        [PFFileManager removeItemAtPathAsync:path]
-    ];
-    [[BFTask taskForCompletionOfAllTasks:removalTasks] waitUntilFinished];
+            [PFFileManager removeItemAtPathAsync:path]
+        ];
+        [[BFTask taskForCompletionOfAllTasks:removalTasks] waitUntilFinished];
+    }
 
 
     _testHelper = nil;
@@ -72,10 +74,10 @@
     [Parse _resetDataSharingIdentifiers];
 
     _testHelper.runningInExtensionEnvironment = YES;
-    XCTAssertThrows([Parse enableDataSharingWithApplicationGroupIdentifier:@"yolo"]);
+    [Parse enableDataSharingWithApplicationGroupIdentifier:@"yolo"];
 
     // Just to make sure that initialization runs smoothly
-    [Parse setApplicationId:[[NSUUID UUID] UUIDString] clientKey:[[NSUUID UUID] UUIDString]];
+    XCTAssertThrows([Parse setApplicationId:[[NSUUID UUID] UUIDString] clientKey:[[NSUUID UUID] UUIDString]]);
 }
 
 - (void)testEnablingDataSharingFromExtensions {
@@ -86,12 +88,17 @@
                                      containingApplication:@"parentYolo"];
     [Parse _resetDataSharingIdentifiers];
 
+    XCTAssertNoThrow([Parse setApplicationId:[[NSUUID UUID] UUIDString] clientKey:[[NSUUID UUID] UUIDString]]);
+
+    // Immediately tear-down.
+    [Parse _clearCurrentManager];
+
     _testHelper.runningInExtensionEnvironment = NO;
-    XCTAssertThrows([Parse enableDataSharingWithApplicationGroupIdentifier:@"yolo"
-                                                    containingApplication:@"parentYolo"]);
+    [Parse enableDataSharingWithApplicationGroupIdentifier:@"yolo"
+                                     containingApplication:@"parentYolo"];
 
     // Just to make sure that initialization runs smoothly
-    [Parse setApplicationId:[[NSUUID UUID] UUIDString] clientKey:[[NSUUID UUID] UUIDString]];
+    XCTAssertThrows([Parse setApplicationId:[[NSUUID UUID] UUIDString] clientKey:[[NSUUID UUID] UUIDString]]);
 }
 
 - (void)testMainAppUsesSharedContainer {

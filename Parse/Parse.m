@@ -54,17 +54,35 @@ static NSString *containingApplicationBundleIdentifier_;
 ///--------------------------------------
 
 + (void)setApplicationId:(NSString *)applicationId clientKey:(NSString *)clientKey {
-    PFConsistencyAssert([applicationId length], @"'applicationId' should not be nil.");
-    PFConsistencyAssert([clientKey length], @"'clientKey' should not be nil.");
-    
-    // Setup new manager first, so it's 100% ready whenever someone sends a request for anything.
-    ParseManager *manager = [[ParseManager alloc] initWithApplicationId:applicationId clientKey:clientKey];
-    [manager configureWithApplicationGroupIdentifier:applicationGroupIdentifier_
-                     containingApplicationIdentifier:containingApplicationBundleIdentifier_
-                               enabledLocalDataStore:shouldEnableLocalDatastore_];
-    currentParseManager_ = manager;
+    [self initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        configuration.applicationId = applicationId;
+        configuration.clientKey = clientKey;
+        configuration.localDatastoreEnabled = shouldEnableLocalDatastore_;
+        configuration.applicationGroupIdentifier = applicationGroupIdentifier_;
+        configuration.containingApplicationBundleIdentifier = containingApplicationBundleIdentifier_;
+    }]];
 
+    // TODO (richardross): Investigate why we actually need this here.
     shouldEnableLocalDatastore_ = NO;
+}
+
++ (void)initializeWithConfiguration:(ParseClientConfiguration *)configuration {
+    // Validate configuration
+    PFConsistencyAssert([configuration.applicationId length], @"'applicationId' should not be nil.");
+    PFConsistencyAssert([configuration.clientKey length], @"'clientKey' should not be nil.");
+
+    if (configuration.applicationGroupIdentifier) {
+        if ([PFApplication currentApplication].extensionEnvironment) {
+            PFConsistencyAssert([configuration.containingApplicationBundleIdentifier length], @"'containingApplicationBundleIdentifier' cannot be nil in extension environment");
+        } else {
+            PFConsistencyAssert(![configuration.containingApplicationBundleIdentifier length], @"'containingApplicationBundleIdentifier' must be nil in non-extension environment");
+        }
+
+        PFConsistencyAssert([PFFileManager isApplicationGroupContainerReachableForGroupIdentifier:configuration.applicationGroupIdentifier],
+                            @"ApplicationGroupContainer is unreachable. Please double check your Xcode project settings.");
+    }
+
+    currentParseManager_ = [[ParseManager alloc] initWithConfiguration:configuration];
 
     PFObjectSubclassingController *subclassingController = [PFObjectSubclassingController defaultController];
     // Register built-in subclasses of PFObject so they get used.
@@ -88,19 +106,23 @@ static NSString *containingApplicationBundleIdentifier_;
 
     [currentParseManager_ preloadDiskObjectsToMemoryAsync];
 
-    [[self parseModulesCollection] parseDidInitializeWithApplicationId:applicationId clientKey:clientKey];
+    [[self parseModulesCollection] parseDidInitializeWithApplicationId:configuration.applicationId clientKey:configuration.clientKey];
+}
+
++ (ParseClientConfiguration *)currentConfiguration {
+    return currentParseManager_.configuration;
 }
 
 + (NSString *)getApplicationId {
     PFConsistencyAssert(currentParseManager_,
                         @"You have to call setApplicationId:clientKey: on Parse to configure Parse.");
-    return currentParseManager_.applicationId;
+    return currentParseManager_.configuration.applicationId;
 }
 
 + (NSString *)getClientKey {
     PFConsistencyAssert(currentParseManager_,
                         @"You have to call setApplicationId:clientKey: on Parse to configure Parse.");
-    return currentParseManager_.clientKey;
+    return currentParseManager_.configuration.clientKey;
 }
 
 ///--------------------------------------
@@ -111,9 +133,7 @@ static NSString *containingApplicationBundleIdentifier_;
     PFConsistencyAssert(!currentParseManager_,
                         @"'enableDataSharingWithApplicationGroupIdentifier:' must be called before 'setApplicationId:clientKey'");
     PFParameterAssert([groupIdentifier length], @"'groupIdentifier' should not be nil.");
-    PFConsistencyAssert(![PFApplication currentApplication].extensionEnvironment, @"This method cannot be used in application extensions.");
-    PFConsistencyAssert([PFFileManager isApplicationGroupContainerReachableForGroupIdentifier:groupIdentifier],
-                        @"ApplicationGroupContainer is unreachable. Please double check your Xcode project settings.");
+
     applicationGroupIdentifier_ = [groupIdentifier copy];
 }
 
@@ -123,9 +143,6 @@ static NSString *containingApplicationBundleIdentifier_;
                         @"'enableDataSharingWithApplicationGroupIdentifier:containingApplication:' must be called before 'setApplicationId:clientKey'");
     PFParameterAssert([groupIdentifier length], @"'groupIdentifier' should not be nil.");
     PFParameterAssert([bundleIdentifier length], @"Containing application bundle identifier should not be nil.");
-    PFConsistencyAssert([PFApplication currentApplication].extensionEnvironment, @"This method can only be used in application extensions.");
-    PFConsistencyAssert([PFFileManager isApplicationGroupContainerReachableForGroupIdentifier:groupIdentifier],
-                        @"ApplicationGroupContainer is unreachable. Please double check your Xcode project settings.");
 
     applicationGroupIdentifier_ = groupIdentifier;
     containingApplicationBundleIdentifier_ = bundleIdentifier;
