@@ -33,6 +33,7 @@
 @interface PFURLSessionCommandRunner () <PFURLSessionDelegate>
 
 @property (nonatomic, strong) NSNotificationCenter *notificationCenter;
+@property (nonatomic, assign) NSUInteger retryAttempts;
 
 @end
 
@@ -53,8 +54,23 @@
 - (instancetype)initWithDataSource:(id<PFInstallationIdentifierStoreProvider>)dataSource
                      applicationId:(NSString *)applicationId
                          clientKey:(NSString *)clientKey {
-    NSURLSessionConfiguration *configuration = [[self class] _urlSessionConfigurationForApplicationId:applicationId
-                                                                                            clientKey:clientKey];
+    return [self initWithDataSource:dataSource
+               sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                      retryAttempts:PFCommandRunningDefaultMaxAttemptsCount
+                      applicationId:applicationId
+                          clientKey:clientKey];
+
+}
+
+- (instancetype)initWithDataSource:(id<PFInstallationIdentifierStoreProvider>)dataSource
+              sessionConfiguration:(NSURLSessionConfiguration *)configuration
+                     retryAttempts:(NSUInteger)retryAttempts
+                     applicationId:(NSString *)applicationId
+                         clientKey:(NSString *)clientKey {
+    configuration = [[self class] _modifyUrlSessionConfiguration:configuration
+                                                forApplicationId:applicationId
+                                                       clientKey:clientKey];
+
     PFURLSession *session = [PFURLSession sessionWithConfiguration:configuration delegate:self];
     PFCommandURLRequestConstructor *constructor = [PFCommandURLRequestConstructor constructorWithDataSource:dataSource];
     self = [self initWithDataSource:dataSource
@@ -63,6 +79,7 @@
                  notificationCenter:[NSNotificationCenter defaultCenter]];
     if (!self) return nil;
 
+    _retryAttempts = retryAttempts;
     _applicationId = [applicationId copy];
     _clientKey = [clientKey copy];
 
@@ -77,6 +94,7 @@
     if (!self) return nil;
 
     _initialRetryDelay = PFCommandRunningDefaultRetryDelay;
+    _retryAttempts = PFCommandRunningDefaultMaxAttemptsCount;
 
     _requestConstructor = requestConstructor;
     _session = session;
@@ -89,6 +107,18 @@
                               applicationId:(NSString *)applicationId
                                   clientKey:(NSString *)clientKey {
     return [[self alloc] initWithDataSource:dataSource applicationId:applicationId clientKey:clientKey];
+}
+
++ (instancetype)commandRunnerWithDataSource:(id<PFInstallationIdentifierStoreProvider>)dataSource
+                       sessionConfiguration:(NSURLSessionConfiguration *)configuration
+                              retryAttempts:(NSUInteger)retryAttempts
+                              applicationId:(NSString *)applicationId
+                                  clientKey:(NSString *)clientKey {
+    return [[self alloc] initWithDataSource:dataSource
+                       sessionConfiguration:configuration
+                              retryAttempts:retryAttempts
+                              applicationId:applicationId
+                                  clientKey:clientKey];
 }
 
 ///--------------------------------------
@@ -192,7 +222,7 @@
     return [self _performCommandRunningBlock:block
                        withCancellationToken:cancellationToken
                                        delay:delay
-                                 forAttempts:PFCommandRunningDefaultMaxAttemptsCount];
+                                 forAttempts:_retryAttempts];
 }
 
 - (BFTask *)_performCommandRunningBlock:(nonnull id (^)())block
@@ -209,7 +239,7 @@
         if ([[task.error userInfo][@"temporary"] boolValue] && attempts > 1) {
             PFLogError(PFLoggingTagCommon,
                        @"Network connection failed. Making attempt %lu after sleeping for %f seconds.",
-                       (unsigned long)(PFCommandRunningDefaultMaxAttemptsCount - attempts + 1), (double)delay);
+                       (unsigned long)(_retryAttempts - attempts + 1), (double)delay);
 
             return [[BFTask taskWithDelay:(int)(delay * 1000)] continueWithBlock:^id(BFTask *task) {
                 return [self _performCommandRunningBlock:block
@@ -226,9 +256,10 @@
 #pragma mark - NSURLSessionConfiguration
 ///--------------------------------------
 
-+ (NSURLSessionConfiguration *)_urlSessionConfigurationForApplicationId:(NSString *)applicationId
-                                                              clientKey:(NSString *)clientKey {
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
++ (NSURLSessionConfiguration *)_modifyUrlSessionConfiguration:(NSURLSessionConfiguration *)configuration
+                                             forApplicationId:(NSString *)applicationId
+                                                    clientKey:(NSString *)clientKey {
+    configuration = [configuration copy];
 
     // No cookies, they are bad for you.
     configuration.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyNever;
@@ -243,7 +274,11 @@
     NSDictionary *headers = [PFCommandURLRequestConstructor defaultURLRequestHeadersForApplicationId:applicationId
                                                                                            clientKey:clientKey
                                                                                               bundle:bundle];
-    configuration.HTTPAdditionalHeaders = headers;
+
+    NSMutableDictionary *existingHeaders = [configuration.HTTPAdditionalHeaders mutableCopy];
+    [existingHeaders addEntriesFromDictionary:headers];
+
+    configuration.HTTPAdditionalHeaders = existingHeaders;
 
     return configuration;
 }

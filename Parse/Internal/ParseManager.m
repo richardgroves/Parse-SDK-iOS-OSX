@@ -313,6 +313,8 @@ static NSString *const _ParseApplicationIdFileName = @"applicationId";
     dispatch_sync(_commandRunnerAccessQueue, ^{
         if (!_commandRunner) {
             _commandRunner = [PFURLSessionCommandRunner commandRunnerWithDataSource:self
+                                                               sessionConfiguration:self.configuration.URLSessionConfiguration
+                                                                      retryAttempts:self.configuration.URLSessionRetryAttempts
                                                                       applicationId:self.configuration.applicationId
                                                                           clientKey:self.configuration.clientKey];
         }

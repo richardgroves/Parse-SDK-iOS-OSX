@@ -10,6 +10,7 @@
 #import "ParseClientConfiguration.h"
 
 #import "PFHash.h"
+#import "PFCommandRunningConstants.h"
 
 @interface ParseClientConfiguration()
 
@@ -20,6 +21,9 @@
 
 @property (nullable, nonatomic, copy, readwrite) NSString *applicationGroupIdentifier;
 @property (nullable, nonatomic, copy, readwrite) NSString *containingApplicationBundleIdentifier;
+
+@property (null_resettable, nonatomic, copy, readwrite) NSURLSessionConfiguration *URLSessionConfiguration;
+@property (nonatomic, assign, readwrite) NSUInteger URLSessionRetryAttempts;
 
 @end
 
@@ -38,6 +42,9 @@
     self = [super init];
     if (!self) return nil;
 
+    _URLSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    _URLSessionRetryAttempts = PFCommandRunningDefaultMaxAttemptsCount;
+
     configurationBlock(self);
 
     return self;
@@ -45,6 +52,17 @@
 
 + (instancetype)configurationWithBlock:(void (^)(id<ParseMutableClientConfiguration>))configurationBlock {
     return [[self alloc] initWithConfigurationBlock:configurationBlock];
+}
+
+///--------------------------------------
+#pragma mark - Properties
+///--------------------------------------
+
+- (void)setURLSessionConfiguration:(NSURLSessionConfiguration *)URLSessionConfiguration {
+    if (URLSessionConfiguration == nil) {
+        URLSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    }
+    _URLSessionConfiguration = URLSessionConfiguration;
 }
 
 ///--------------------------------------
