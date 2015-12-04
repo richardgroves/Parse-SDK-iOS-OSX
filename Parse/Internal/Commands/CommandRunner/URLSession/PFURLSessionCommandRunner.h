@@ -17,13 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithDataSource:(id<PFInstallationIdentifierStoreProvider>)dataSource
-              sessionConfiguration:(NSURLSessionConfiguration *)configuration
                      retryAttempts:(NSUInteger)retryAttempts
                      applicationId:(NSString *)applicationId
                          clientKey:(NSString *)clientKey;
 
 + (instancetype)commandRunnerWithDataSource:(id<PFInstallationIdentifierStoreProvider>)dataSource
-                       sessionConfiguration:(NSURLSessionConfiguration *)configuration
                               retryAttempts:(NSUInteger)retryAttempts
                               applicationId:(NSString *)applicationId
                                   clientKey:(NSString *)clientKey;

@@ -23,8 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy, readwrite) NSString *applicationGroupIdentifier;
 @property (nullable, nonatomic, copy, readwrite) NSString *containingApplicationBundleIdentifier;
 
-@property (null_resettable, nonatomic, copy, readwrite) NSURLSessionConfiguration *URLSessionConfiguration;
-@property (nonatomic, assign, readwrite) NSUInteger URLSessionRetryAttempts;
+@property (nonatomic, assign, readwrite) NSUInteger networkRetryAttempts;
 
 @end
 
@@ -41,8 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy, readonly) NSString *applicationGroupIdentifier;
 @property (nullable, nonatomic, copy, readonly) NSString *containingApplicationBundleIdentifier;
 
-@property (null_resettable, nonatomic, copy, readonly) NSURLSessionConfiguration *URLSessionConfiguration;
-@property (nonatomic, assign, readonly) NSUInteger URLSessionRetryAttempts;
+@property (nonatomic, assign, readonly) NSUInteger networkRetryAttempts;
 
 + (instancetype)configurationWithBlock:(void(^)(id<ParseMutableClientConfiguration> configuration))configurationBlock;
 

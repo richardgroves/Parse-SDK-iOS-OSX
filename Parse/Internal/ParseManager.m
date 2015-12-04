@@ -110,6 +110,14 @@ static NSString *const _ParseApplicationIdFileName = @"applicationId";
 
     _configuration = [configuration copy];
 
+    return self;
+}
+
+///--------------------------------------
+#pragma mark - Offline Store
+///--------------------------------------
+
+- (void)startManaging {
     // Migrate any data if it's required.
     [self _migrateSandboxDataToApplicationGroupContainerIfNeeded];
 
@@ -121,13 +129,7 @@ static NSString *const _ParseApplicationIdFileName = @"applicationId";
                                          PFOfflineStoreOptionAlwaysFetchFromSQLite : 0);
         [self loadOfflineStoreWithOptions:options];
     }
-
-    return self;
 }
-
-///--------------------------------------
-#pragma mark - Offline Store
-///--------------------------------------
 
 - (void)loadOfflineStoreWithOptions:(PFOfflineStoreOptions)options {
     dispatch_barrier_sync(_offlineStoreAccessQueue, ^{
@@ -313,8 +315,7 @@ static NSString *const _ParseApplicationIdFileName = @"applicationId";
     dispatch_sync(_commandRunnerAccessQueue, ^{
         if (!_commandRunner) {
             _commandRunner = [PFURLSessionCommandRunner commandRunnerWithDataSource:self
-                                                               sessionConfiguration:self.configuration.URLSessionConfiguration
-                                                                      retryAttempts:self.configuration.URLSessionRetryAttempts
+                                                                      retryAttempts:self.configuration.networkRetryAttempts
                                                                       applicationId:self.configuration.applicationId
                                                                           clientKey:self.configuration.clientKey];
         }

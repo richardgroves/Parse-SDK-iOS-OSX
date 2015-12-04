@@ -11,6 +11,7 @@
 #import "Parse.h"
 #import "ParseInternal.h"
 #import "ParseManager.h"
+#import "ParseClientConfiguration_Private.h"
 #import "PFEventuallyPin.h"
 #import "PFObject+Subclass.h"
 #import "PFOfflineStore.h"
@@ -34,11 +35,7 @@
 @implementation Parse
 
 static ParseManager *currentParseManager_;
-
-static BOOL shouldEnableLocalDatastore_;
-
-static NSString *applicationGroupIdentifier_;
-static NSString *containingApplicationBundleIdentifier_;
+static ParseClientConfiguration *currentParseConfiguration_;
 
 + (void)initialize {
     if (self == [Parse class]) {
@@ -46,6 +43,8 @@ static NSString *containingApplicationBundleIdentifier_;
         // Without this call - private categories - will require `-ObjC` in linker flags.
         // By explicitly calling empty method - we can avoid that.
         [PFCategoryLoader loadPrivateCategories];
+
+        currentParseConfiguration_ = [ParseClientConfiguration emptyConfiguration];
     }
 }
 
@@ -54,35 +53,18 @@ static NSString *containingApplicationBundleIdentifier_;
 ///--------------------------------------
 
 + (void)setApplicationId:(NSString *)applicationId clientKey:(NSString *)clientKey {
-    [self initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-        configuration.applicationId = applicationId;
-        configuration.clientKey = clientKey;
-        configuration.localDatastoreEnabled = shouldEnableLocalDatastore_;
-        configuration.applicationGroupIdentifier = applicationGroupIdentifier_;
-        configuration.containingApplicationBundleIdentifier = containingApplicationBundleIdentifier_;
-    }]];
+    currentParseConfiguration_.applicationId = applicationId;
+    currentParseConfiguration_.clientKey = clientKey;
 
-    // TODO (richardross): Investigate why we actually need this here.
-    shouldEnableLocalDatastore_ = NO;
+    [self initializeWithConfiguration:currentParseConfiguration_];
+
+    // TODO(richardross): Investigate why this is necessary.
+    currentParseConfiguration_.localDatastoreEnabled = NO;
 }
 
 + (void)initializeWithConfiguration:(ParseClientConfiguration *)configuration {
-    // Validate configuration
-    PFConsistencyAssert([configuration.applicationId length], @"'applicationId' should not be nil.");
-    PFConsistencyAssert([configuration.clientKey length], @"'clientKey' should not be nil.");
-
-    if (configuration.applicationGroupIdentifier) {
-        if ([PFApplication currentApplication].extensionEnvironment) {
-            PFConsistencyAssert([configuration.containingApplicationBundleIdentifier length], @"'containingApplicationBundleIdentifier' cannot be nil in extension environment");
-        } else {
-            PFConsistencyAssert(![configuration.containingApplicationBundleIdentifier length], @"'containingApplicationBundleIdentifier' must be nil in non-extension environment");
-        }
-
-        PFConsistencyAssert([PFFileManager isApplicationGroupContainerReachableForGroupIdentifier:configuration.applicationGroupIdentifier],
-                            @"ApplicationGroupContainer is unreachable. Please double check your Xcode project settings.");
-    }
-
     currentParseManager_ = [[ParseManager alloc] initWithConfiguration:configuration];
+    [currentParseManager_ startManaging];
 
     PFObjectSubclassingController *subclassingController = [PFObjectSubclassingController defaultController];
     // Register built-in subclasses of PFObject so they get used.
@@ -134,7 +116,7 @@ static NSString *containingApplicationBundleIdentifier_;
                         @"'enableDataSharingWithApplicationGroupIdentifier:' must be called before 'setApplicationId:clientKey'");
     PFParameterAssert([groupIdentifier length], @"'groupIdentifier' should not be nil.");
 
-    applicationGroupIdentifier_ = [groupIdentifier copy];
+    currentParseConfiguration_.applicationGroupIdentifier = groupIdentifier;
 }
 
 + (void)enableDataSharingWithApplicationGroupIdentifier:(NSString *)groupIdentifier
@@ -144,21 +126,20 @@ static NSString *containingApplicationBundleIdentifier_;
     PFParameterAssert([groupIdentifier length], @"'groupIdentifier' should not be nil.");
     PFParameterAssert([bundleIdentifier length], @"Containing application bundle identifier should not be nil.");
 
-    applicationGroupIdentifier_ = groupIdentifier;
-    containingApplicationBundleIdentifier_ = bundleIdentifier;
+    currentParseConfiguration_.applicationGroupIdentifier = groupIdentifier;
+    currentParseConfiguration_.containingApplicationBundleIdentifier = bundleIdentifier;
 }
 
 + (NSString *)applicationGroupIdentifierForDataSharing {
-    return applicationGroupIdentifier_;
+    return currentParseConfiguration_.applicationGroupIdentifier;
 }
 
 + (NSString *)containingApplicationBundleIdentifierForDataSharing {
-    return containingApplicationBundleIdentifier_;
+    return currentParseConfiguration_.containingApplicationBundleIdentifier;
 }
 
 + (void)_resetDataSharingIdentifiers {
-    applicationGroupIdentifier_ = nil;
-    containingApplicationBundleIdentifier_ = nil;
+    [currentParseConfiguration_ _resetDataSharingIdentifiers];
 }
 
 ///--------------------------------------
@@ -171,12 +152,12 @@ static NSString *containingApplicationBundleIdentifier_;
 
     // Lazily enableLocalDatastore after init. We can't use ParseModule because
     // ParseModule isn't processed in main thread and may cause race condition.
-    shouldEnableLocalDatastore_ = YES;
+    currentParseConfiguration_.localDatastoreEnabled = YES;
 }
 
 + (BOOL)isLocalDatastoreEnabled {
     if (!currentParseManager_) {
-        return shouldEnableLocalDatastore_;
+        return currentParseConfiguration_.localDatastoreEnabled;
     }
     return currentParseManager_.offlineStoreLoaded;
 }

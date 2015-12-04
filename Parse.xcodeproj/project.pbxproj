@@ -2198,6 +2198,7 @@
 		F51D06361B793A110044539E /* PFSQLiteDatabase_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFSQLiteDatabase_Private.h; sourceTree = "<group>"; };
 		F5556A141B66F36000410837 /* URLSessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSessionTests.m; sourceTree = "<group>"; };
 		F5556A171B66F47900410837 /* PFURLSession_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFURLSession_Private.h; sourceTree = "<group>"; };
+		F556643F1C10F37E006DEC12 /* ParseClientConfiguration_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseClientConfiguration_Private.h; sourceTree = "<group>"; };
 		F55ABB531B4F39DA00A0ECD5 /* Parse-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Parse-iOS.xcconfig"; sourceTree = "<group>"; };
 		F55ABB541B4F39DA00A0ECD5 /* Parse-OSX.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Parse-OSX.xcconfig"; sourceTree = "<group>"; };
 		F55ABB591B4F39DA00A0ECD5 /* ParseUnitTests-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ParseUnitTests-iOS.xcconfig"; sourceTree = "<group>"; };
@@ -2404,6 +2405,7 @@
 				81E2D5AF19DDAAB5009053A1 /* PFAssert.h */,
 				816AC9B81A3F48250031D94C /* PFApplication.h */,
 				816AC9B91A3F48250031D94C /* PFApplication.m */,
+				F556643F1C10F37E006DEC12 /* ParseClientConfiguration_Private.h */,
 				81068EEF1AE0845D00A34D13 /* PFEncoder.h */,
 				81068EF01AE0845D00A34D13 /* PFEncoder.m */,
 				919311D519AE5EB20008FF12 /* PFDecoder.h */,

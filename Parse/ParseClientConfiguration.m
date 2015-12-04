@@ -8,29 +8,14 @@
  */
 
 #import "ParseClientConfiguration.h"
+#import "ParseClientConfiguration_Private.h"
 
-#import "PFHash.h"
+#import "PFAssert.h"
+#import "PFApplication.h"
 #import "PFCommandRunningConstants.h"
+#import "PFFileManager.h"
+#import "PFHash.h"
 
-@interface ParseClientConfiguration()
-
-@property (nullable, nonatomic, copy, readwrite) NSString *applicationId;
-@property (nullable, nonatomic, copy, readwrite) NSString *clientKey;
-
-@property (nonatomic, assign, readwrite, getter=isLocalDatastoreEnabled) BOOL localDatastoreEnabled;
-
-@property (nullable, nonatomic, copy, readwrite) NSString *applicationGroupIdentifier;
-@property (nullable, nonatomic, copy, readwrite) NSString *containingApplicationBundleIdentifier;
-
-@property (null_resettable, nonatomic, copy, readwrite) NSURLSessionConfiguration *URLSessionConfiguration;
-@property (nonatomic, assign, readwrite) NSUInteger URLSessionRetryAttempts;
-
-@end
-
-// We must implement the protocol here otherwise clang issues warnings about non-matching property declarations.
-// For some reason if the property declarations are on a separate category, it doesn't care.
-@interface ParseClientConfiguration(Private) <ParseMutableClientConfiguration>
-@end
 
 @implementation ParseClientConfiguration
 
@@ -38,12 +23,15 @@
 #pragma mark - Init
 ///--------------------------------------
 
-- (instancetype)initWithConfigurationBlock:(void (^)(id<ParseMutableClientConfiguration>))configurationBlock {
++ (instancetype)emptyConfiguration {
+    return [super new];
+}
+
+- (instancetype)initWithBlock:(void (^)(id<ParseMutableClientConfiguration>))configurationBlock {
     self = [super init];
     if (!self) return nil;
 
-    _URLSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    _URLSessionRetryAttempts = PFCommandRunningDefaultMaxAttemptsCount;
+    _networkRetryAttempts = PFCommandRunningDefaultMaxAttemptsCount;
 
     configurationBlock(self);
 
@@ -51,18 +39,48 @@
 }
 
 + (instancetype)configurationWithBlock:(void (^)(id<ParseMutableClientConfiguration>))configurationBlock {
-    return [[self alloc] initWithConfigurationBlock:configurationBlock];
+    return [[self alloc] initWithBlock:configurationBlock];
 }
 
 ///--------------------------------------
 #pragma mark - Properties
 ///--------------------------------------
 
-- (void)setURLSessionConfiguration:(NSURLSessionConfiguration *)URLSessionConfiguration {
-    if (URLSessionConfiguration == nil) {
-        URLSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    }
-    _URLSessionConfiguration = URLSessionConfiguration;
+- (void)setApplicationId:(NSString *)applicationId {
+    PFConsistencyAssert([applicationId length], @"'applicationId' should not be nil.");
+    _applicationId = [applicationId copy];
+}
+
+- (void)setClientKey:(NSString *)clientKey {
+    PFConsistencyAssert([clientKey length], @"'clientKey' should not be nil.");
+    _clientKey = [clientKey copy];
+}
+
+- (void)setApplicationGroupIdentifier:(NSString *)applicationGroupIdentifier {
+    PFConsistencyAssert(
+        applicationGroupIdentifier == nil ||
+        [PFFileManager isApplicationGroupContainerReachableForGroupIdentifier:applicationGroupIdentifier],
+        @"ApplicationGroupContainer is unreachable. Please double check your Xcode project settings."
+    );
+
+    _applicationGroupIdentifier = [applicationGroupIdentifier copy];
+}
+
+- (void)setContainingApplicationBundleIdentifier:(NSString *)containingApplicationBundleIdentifier {
+    PFConsistencyAssert(containingApplicationBundleIdentifier == nil ||
+                        [PFApplication currentApplication].extensionEnvironment,
+                        @"'containingApplicationBundleIdentifier' must be non-nil in extension environment");
+
+    PFConsistencyAssert(containingApplicationBundleIdentifier != nil ||
+                        ![PFApplication currentApplication].extensionEnvironment,
+                        @"'containingApplicationBundleIdentifier' must be nil in non-extension environment");
+
+    _containingApplicationBundleIdentifier = containingApplicationBundleIdentifier;
+}
+
+- (void)_resetDataSharingIdentifiers {
+    _applicationGroupIdentifier = nil;
+    _containingApplicationBundleIdentifier = nil;
 }
 
 ///--------------------------------------
@@ -83,7 +101,8 @@
             [self.clientKey isEqual:other.clientKey] &&
             self.localDatastoreEnabled == other.localDatastoreEnabled &&
             [self.applicationGroupIdentifier isEqual:other.applicationGroupIdentifier] &&
-            [self.containingApplicationBundleIdentifier isEqual:other.containingApplicationBundleIdentifier]);
+            [self.containingApplicationBundleIdentifier isEqual:other.containingApplicationBundleIdentifier] &&
+            self.networkRetryAttempts == other.networkRetryAttempts);
 }
 
 ///--------------------------------------
@@ -92,11 +111,13 @@
 
 - (instancetype)copyWithZone:(NSZone *)zone {
     return [ParseClientConfiguration configurationWithBlock:^(ParseClientConfiguration *configuration) {
-        configuration.applicationId = self.applicationId;
-        configuration.clientKey = self.clientKey;
-        configuration.localDatastoreEnabled = self.localDatastoreEnabled;
-        configuration.applicationGroupIdentifier = self.applicationGroupIdentifier;
-        configuration.containingApplicationBundleIdentifier = self.containingApplicationBundleIdentifier;
+        // Use direct assignment to skip over all of the assertions that
+        configuration->_applicationId = self->_applicationId;
+        configuration->_clientKey = self->_clientKey;
+        configuration->_localDatastoreEnabled = self->_localDatastoreEnabled;
+        configuration->_applicationGroupIdentifier = self->_applicationGroupIdentifier;
+        configuration->_containingApplicationBundleIdentifier = self->_containingApplicationBundleIdentifier;
+        configuration->_networkRetryAttempts = self->_networkRetryAttempts;
     }];
 }
 

@@ -55,7 +55,6 @@
                      applicationId:(NSString *)applicationId
                          clientKey:(NSString *)clientKey {
     return [self initWithDataSource:dataSource
-               sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                       retryAttempts:PFCommandRunningDefaultMaxAttemptsCount
                       applicationId:applicationId
                           clientKey:clientKey];
@@ -63,13 +62,11 @@
 }
 
 - (instancetype)initWithDataSource:(id<PFInstallationIdentifierStoreProvider>)dataSource
-              sessionConfiguration:(NSURLSessionConfiguration *)configuration
                      retryAttempts:(NSUInteger)retryAttempts
                      applicationId:(NSString *)applicationId
                          clientKey:(NSString *)clientKey {
-    configuration = [[self class] _modifyUrlSessionConfiguration:configuration
-                                                forApplicationId:applicationId
-                                                       clientKey:clientKey];
+    NSURLSessionConfiguration *configuration = [[self class] _urlSessionConfigurationForApplicationId:applicationId
+                                                                                            clientKey:clientKey];
 
     PFURLSession *session = [PFURLSession sessionWithConfiguration:configuration delegate:self];
     PFCommandURLRequestConstructor *constructor = [PFCommandURLRequestConstructor constructorWithDataSource:dataSource];
@@ -110,12 +107,10 @@
 }
 
 + (instancetype)commandRunnerWithDataSource:(id<PFInstallationIdentifierStoreProvider>)dataSource
-                       sessionConfiguration:(NSURLSessionConfiguration *)configuration
                               retryAttempts:(NSUInteger)retryAttempts
                               applicationId:(NSString *)applicationId
                                   clientKey:(NSString *)clientKey {
     return [[self alloc] initWithDataSource:dataSource
-                       sessionConfiguration:configuration
                               retryAttempts:retryAttempts
                               applicationId:applicationId
                                   clientKey:clientKey];
@@ -256,10 +251,9 @@
 #pragma mark - NSURLSessionConfiguration
 ///--------------------------------------
 
-+ (NSURLSessionConfiguration *)_modifyUrlSessionConfiguration:(NSURLSessionConfiguration *)configuration
-                                             forApplicationId:(NSString *)applicationId
-                                                    clientKey:(NSString *)clientKey {
-    configuration = [configuration copy];
++ (NSURLSessionConfiguration *)_urlSessionConfigurationForApplicationId:(NSString *)applicationId
+                                                              clientKey:(NSString *)clientKey {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
 
     // No cookies, they are bad for you.
     configuration.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyNever;
@@ -274,11 +268,7 @@
     NSDictionary *headers = [PFCommandURLRequestConstructor defaultURLRequestHeadersForApplicationId:applicationId
                                                                                            clientKey:clientKey
                                                                                               bundle:bundle];
-
-    NSMutableDictionary *existingHeaders = [configuration.HTTPAdditionalHeaders mutableCopy];
-    [existingHeaders addEntriesFromDictionary:headers];
-
-    configuration.HTTPAdditionalHeaders = existingHeaders;
+    configuration.HTTPAdditionalHeaders = headers;
 
     return configuration;
 }
