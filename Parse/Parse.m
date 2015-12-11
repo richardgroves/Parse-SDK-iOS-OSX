@@ -63,6 +63,11 @@ static ParseClientConfiguration *currentParseConfiguration_;
 }
 
 + (void)initializeWithConfiguration:(ParseClientConfiguration *)configuration {
+    PFConsistencyAssert(![PFApplication currentApplication].extensionEnvironment ||
+                        configuration.applicationGroupIdentifier == nil ||
+                        configuration.containingApplicationBundleIdentifier != nil,
+                        @"'containingApplicationBundleIdentifier' must be non-nil in extension environment");
+
     currentParseManager_ = [[ParseManager alloc] initWithConfiguration:configuration];
     [currentParseManager_ startManaging];
 
@@ -115,6 +120,7 @@ static ParseClientConfiguration *currentParseConfiguration_;
     PFConsistencyAssert(!currentParseManager_,
                         @"'enableDataSharingWithApplicationGroupIdentifier:' must be called before 'setApplicationId:clientKey'");
     PFParameterAssert([groupIdentifier length], @"'groupIdentifier' should not be nil.");
+    PFConsistencyAssert(![PFApplication currentApplication].extensionEnvironment, @"This method cannot be used in application extensions.");
 
     currentParseConfiguration_.applicationGroupIdentifier = groupIdentifier;
 }

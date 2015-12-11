@@ -71,6 +71,9 @@
     [Parse enableDataSharingWithApplicationGroupIdentifier:@"yolo"];
     [Parse _resetDataSharingIdentifiers];
 
+    _testHelper.runningInExtensionEnvironment = YES;
+    XCTAssertThrows([Parse enableDataSharingWithApplicationGroupIdentifier:@"yolo"]);
+
     // Just to make sure that initialization runs smoothly
     [Parse setApplicationId:[[NSUUID UUID] UUIDString] clientKey:[[NSUUID UUID] UUIDString]];
 }

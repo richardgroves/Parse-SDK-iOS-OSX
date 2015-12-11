@@ -16,7 +16,6 @@
 #import "PFFileManager.h"
 #import "PFHash.h"
 
-
 @implementation ParseClientConfiguration
 
 ///--------------------------------------
@@ -96,13 +95,15 @@
         return NO;
     }
 
+#define EQUAL_OBJECTS(a, b) ((a) == (b) || [(a) isEqual:(b)])
     ParseClientConfiguration *other = object;
-    return ([self.applicationId isEqual:other.applicationId] &&
-            [self.clientKey isEqual:other.clientKey] &&
+    return (EQUAL_OBJECTS(self.applicationId, other.applicationId) &&
+            EQUAL_OBJECTS(self.clientKey, other.clientKey) &&
             self.localDatastoreEnabled == other.localDatastoreEnabled &&
-            [self.applicationGroupIdentifier isEqual:other.applicationGroupIdentifier] &&
-            [self.containingApplicationBundleIdentifier isEqual:other.containingApplicationBundleIdentifier] &&
+            EQUAL_OBJECTS(self.applicationGroupIdentifier, other.applicationGroupIdentifier) &&
+            EQUAL_OBJECTS(self.containingApplicationBundleIdentifier, other.containingApplicationBundleIdentifier) &&
             self.networkRetryAttempts == other.networkRetryAttempts);
+#undef EQUAL_OBJECTS
 }
 
 ///--------------------------------------
@@ -111,7 +112,7 @@
 
 - (instancetype)copyWithZone:(NSZone *)zone {
     return [ParseClientConfiguration configurationWithBlock:^(ParseClientConfiguration *configuration) {
-        // Use direct assignment to skip over all of the assertions that
+        // Use direct assignment to skip over all of the assertions that may fail if we're not fully initialized yet.
         configuration->_applicationId = self->_applicationId;
         configuration->_clientKey = self->_clientKey;
         configuration->_localDatastoreEnabled = self->_localDatastoreEnabled;
