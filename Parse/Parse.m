@@ -68,8 +68,10 @@ static ParseClientConfiguration *currentParseConfiguration_;
                         configuration.containingApplicationBundleIdentifier != nil,
                         @"'containingApplicationBundleIdentifier' must be non-nil in extension environment");
 
-    currentParseManager_ = [[ParseManager alloc] initWithConfiguration:configuration];
-    [currentParseManager_ startManaging];
+    ParseManager *manager = [[ParseManager alloc] initWithConfiguration:configuration];
+    [manager startManaging];
+
+    currentParseManager_ = manager;
 
     PFObjectSubclassingController *subclassingController = [PFObjectSubclassingController defaultController];
     // Register built-in subclasses of PFObject so they get used.

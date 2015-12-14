@@ -153,7 +153,7 @@ static NSString *const _ParseApplicationIdFileName = @"applicationId";
 }
 
 - (BOOL)isOfflineStoreLoaded {
-    return (self.offlineStore != nil);
+    return self.configuration.localDatastoreEnabled;
 }
 
 ///--------------------------------------
