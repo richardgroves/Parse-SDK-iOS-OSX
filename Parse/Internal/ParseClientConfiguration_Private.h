@@ -9,6 +9,8 @@
 
 #import "ParseClientConfiguration.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ParseClientConfiguration ()
 
 @property (nullable, nonatomic, copy, readwrite) NSString *applicationId;
@@ -21,7 +23,7 @@
 
 @property (nonatomic, assign, readwrite) NSUInteger networkRetryAttempts;
 
-+ (nonnull instancetype)emptyConfiguration;
++ (instancetype)emptyConfiguration;
 
 - (void)_resetDataSharingIdentifiers;
 
@@ -31,3 +33,5 @@
 // For some reason if the property declarations are on a separate category, it doesn't care.
 @interface ParseClientConfiguration (Private) <ParseMutableClientConfiguration>
 @end
+
+NS_ASSUME_NONNULL_END
