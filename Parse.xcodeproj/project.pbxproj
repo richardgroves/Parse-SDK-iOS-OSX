@@ -1469,8 +1469,8 @@
 		F515355A1B57573700C49F56 /* PFDefaultACLController.h in Headers */ = {isa = PBXBuildFile; fileRef = F51535571B57573700C49F56 /* PFDefaultACLController.h */; };
 		F515355B1B57573700C49F56 /* PFDefaultACLController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51535581B57573700C49F56 /* PFDefaultACLController.m */; };
 		F515355C1B57573700C49F56 /* PFDefaultACLController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51535581B57573700C49F56 /* PFDefaultACLController.m */; };
-		F5198B001C1B74B700CC6D61 /* ClientConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5198AF81C1B744200CC6D61 /* ClientConfigurationTests.m */; };
-		F5198B011C1B74B800CC6D61 /* ClientConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5198AF81C1B744200CC6D61 /* ClientConfigurationTests.m */; };
+		F5198B001C1B74B700CC6D61 /* ParseClientConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5198AF81C1B744200CC6D61 /* ParseClientConfigurationTests.m */; };
+		F5198B011C1B74B800CC6D61 /* ParseClientConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5198AF81C1B744200CC6D61 /* ParseClientConfigurationTests.m */; };
 		F51D06341B792CF10044539E /* PFSQLiteDatabaseController.h in Headers */ = {isa = PBXBuildFile; fileRef = F51D06321B792CF10044539E /* PFSQLiteDatabaseController.h */; };
 		F51D06351B792CF10044539E /* PFSQLiteDatabaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51D06331B792CF10044539E /* PFSQLiteDatabaseController.m */; };
 		F51D06371B793A110044539E /* PFSQLiteDatabase_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F51D06361B793A110044539E /* PFSQLiteDatabase_Private.h */; };
@@ -2195,7 +2195,7 @@
 		F51534FC1B571E9100C49F56 /* PFMutableACLState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMutableACLState.m; sourceTree = "<group>"; };
 		F51535571B57573700C49F56 /* PFDefaultACLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFDefaultACLController.h; sourceTree = "<group>"; };
 		F51535581B57573700C49F56 /* PFDefaultACLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFDefaultACLController.m; sourceTree = "<group>"; };
-		F5198AF81C1B744200CC6D61 /* ClientConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConfigurationTests.m; sourceTree = "<group>"; };
+		F5198AF81C1B744200CC6D61 /* ParseClientConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClientConfigurationTests.m; sourceTree = "<group>"; };
 		F51D06321B792CF10044539E /* PFSQLiteDatabaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFSQLiteDatabaseController.h; sourceTree = "<group>"; };
 		F51D06331B792CF10044539E /* PFSQLiteDatabaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFSQLiteDatabaseController.m; sourceTree = "<group>"; };
 		F51D06361B793A110044539E /* PFSQLiteDatabase_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFSQLiteDatabase_Private.h; sourceTree = "<group>"; };
@@ -2868,7 +2868,6 @@
 				814915D31B66D44500EFD14F /* AnonymousAuthenticationProviderTests.m */,
 				814915D41B66D44500EFD14F /* AnonymousUtilsTests.m */,
 				814915D51B66D44500EFD14F /* BaseStateTests.m */,
-				F5198AF81C1B744200CC6D61 /* ClientConfigurationTests.m */,
 				814915D71B66D44500EFD14F /* CloudCodeControllerTests.m */,
 				814915D81B66D44500EFD14F /* CloudCommandTests.m */,
 				814915D91B66D44500EFD14F /* CloudUnitTests.m */,
@@ -2921,6 +2920,7 @@
 				814916051B66D44500EFD14F /* OfflineQueryControllerTests.m */,
 				814916061B66D44500EFD14F /* OfflineQueryLogicUnitTests.m */,
 				814916071B66D44500EFD14F /* OperationSetUnitTests.m */,
+				F5198AF81C1B744200CC6D61 /* ParseClientConfigurationTests.m */,
 				814916081B66D44500EFD14F /* ParseModuleUnitTests.m */,
 				814916091B66D44500EFD14F /* ParseSetupUnitTests.m */,
 				8149160A1B66D44500EFD14F /* PinningObjectStoreTests.m */,
@@ -5394,7 +5394,7 @@
 				814916D31B66D44600EFD14F /* SessionUnitTests.m in Sources */,
 				81E0337E1B57441F00B25168 /* CLLocationManager+TestAdditions.m in Sources */,
 				814916471B66D44600EFD14F /* CommandUnitTests.m in Sources */,
-				F5198B001C1B74B700CC6D61 /* ClientConfigurationTests.m in Sources */,
+				F5198B001C1B74B700CC6D61 /* ParseClientConfigurationTests.m in Sources */,
 				814916611B66D44600EFD14F /* FieldOperationTests.m in Sources */,
 				814916A11B66D44600EFD14F /* ParseModuleUnitTests.m in Sources */,
 				814916951B66D44600EFD14F /* ObjectSubclassTests.m in Sources */,
@@ -5453,7 +5453,7 @@
 				8149168A1B66D44600EFD14F /* ObjectLocalIdStoreTests.m in Sources */,
 				814916A61B66D44600EFD14F /* PinningObjectStoreTests.m in Sources */,
 				814916501B66D44600EFD14F /* ConfigUnitTests.m in Sources */,
-				F5198B011C1B74B800CC6D61 /* ClientConfigurationTests.m in Sources */,
+				F5198B011C1B74B800CC6D61 /* ParseClientConfigurationTests.m in Sources */,
 				814916E01B66D44600EFD14F /* UserFileCodingLogicTests.m in Sources */,
 				814916D41B66D44600EFD14F /* SessionUnitTests.m in Sources */,
 				811AAF191B72D7E400B1AC1F /* ObjectFilePersistenceControllerTests.m in Sources */,

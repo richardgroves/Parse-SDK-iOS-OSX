@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
  configuration.localDatastoreEnabled = true
  ```
  */
-@protocol ParseMutableClientConfiguration<NSObject>
+@protocol ParseMutableClientConfiguration <NSObject>
 
 /**
  The Parse.com application id to configure the SDK with.
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Whether or not to enable pinning in the SDK.
 
- The default value is `false`.
+ The default value is `NO`.
  */
 @property (nonatomic, assign, readwrite, getter=isLocalDatastoreEnabled) BOOL localDatastoreEnabled;
 
@@ -74,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
  Use this object to construct a configuration for the SDK in your application, and pass it to
  `Parse.+initializeWithConfiguration:`.
  */
-@interface ParseClientConfiguration : NSObject<NSCopying>
+@interface ParseClientConfiguration : NSObject <NSCopying>
 
 /**
  The Parse.com application id to configure the SDK with.
@@ -89,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Whether or not to enable pinning in the SDK.
 
- The default value is `false`.
+ The default value is `NO`.
  */
 @property (nonatomic, assign, readonly, getter=isLocalDatastoreEnabled) BOOL localDatastoreEnabled;
 
@@ -113,9 +113,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign, readonly) NSUInteger networkRetryAttempts;
 
-+ (instancetype)configurationWithBlock:(void(^)(id<ParseMutableClientConfiguration> configuration))configurationBlock;
++ (instancetype)configurationWithBlock:(void (^)(id<ParseMutableClientConfiguration> configuration))configurationBlock;
 
-+ (instancetype)new NS_UNAVAILABLE;
++ (instancetype) new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
 @end

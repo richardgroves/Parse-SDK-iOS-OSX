@@ -13,10 +13,10 @@
 #import "ParseClientConfiguration.h"
 #import "ParseClientConfiguration_Private.h"
 
-@interface ClientConfigurationTests : PFTestCase
+@interface ParseClientConfigurationTests : PFTestCase
 @end
 
-@implementation ClientConfigurationTests
+@implementation ParseClientConfigurationTests
 
 - (void)testConfigurationWithBlock {
     ParseClientConfiguration *configuration = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {

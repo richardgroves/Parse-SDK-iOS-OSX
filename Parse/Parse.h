@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setApplicationId:(NSString *)applicationId clientKey:(NSString *)clientKey;
 
 /**
- Sets the configuration to be used for parse.
+ Sets the configuration to be used for the Parse SDK.
 
  @note Re-setting the configuration after having previously sent requests through the SDK results in undefined behavior.
 
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Gets the current configuration in use by the Parse SDK.
 
- @returns The current configuration in use by the SDK. Returns nil if the SDK has not been initialized yet.
+ @return The current configuration in use by the SDK. Returns nil if the SDK has not been initialized yet.
  */
 + (ParseClientConfiguration *)currentConfiguration;
 

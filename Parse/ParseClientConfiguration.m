@@ -15,6 +15,7 @@
 #import "PFCommandRunningConstants.h"
 #import "PFFileManager.h"
 #import "PFHash.h"
+#import "PFObjectUtilities.h"
 
 @implementation ParseClientConfiguration
 
@@ -46,33 +47,30 @@
 ///--------------------------------------
 
 - (void)setApplicationId:(NSString *)applicationId {
-    PFConsistencyAssert([applicationId length], @"'applicationId' should not be nil.");
+    PFConsistencyAssert(applicationId.length, @"'applicationId' should not be nil.");
     _applicationId = [applicationId copy];
 }
 
 - (void)setClientKey:(NSString *)clientKey {
-    PFConsistencyAssert([clientKey length], @"'clientKey' should not be nil.");
+    PFConsistencyAssert(clientKey.length, @"'clientKey' should not be nil.");
     _clientKey = [clientKey copy];
 }
 
 - (void)setApplicationGroupIdentifier:(NSString *)applicationGroupIdentifier {
-    PFConsistencyAssert(
-        applicationGroupIdentifier == nil ||
-        [PFFileManager isApplicationGroupContainerReachableForGroupIdentifier:applicationGroupIdentifier],
-        @"ApplicationGroupContainer is unreachable. Please double check your Xcode project settings."
-    );
+    PFConsistencyAssert(applicationGroupIdentifier == nil ||
+                        [PFFileManager isApplicationGroupContainerReachableForGroupIdentifier:applicationGroupIdentifier],
+                        @"ApplicationGroupContainer is unreachable. Please double check your Xcode project settings.");
 
     _applicationGroupIdentifier = [applicationGroupIdentifier copy];
 }
 
 - (void)setContainingApplicationBundleIdentifier:(NSString *)containingApplicationBundleIdentifier {
-    PFConsistencyAssert(containingApplicationBundleIdentifier == nil ||
-                        [PFApplication currentApplication].extensionEnvironment,
-                        @"'containingApplicationBundleIdentifier' must be non-nil in extension environment");
+    PFConsistencyAssert([PFApplication currentApplication].extensionEnvironment,
+                        @"'containingApplicationBundleIdentifier' cannot be set in non-extension environment");
 
-    PFConsistencyAssert(containingApplicationBundleIdentifier != nil ||
-                        ![PFApplication currentApplication].extensionEnvironment,
-                        @"'containingApplicationBundleIdentifier' must be nil in non-extension environment");
+    PFConsistencyAssert(containingApplicationBundleIdentifier.length,
+                        @"'containingApplicationBundleIdentifier' should not be nil.");
+
 
     _containingApplicationBundleIdentifier = containingApplicationBundleIdentifier;
 }
@@ -95,15 +93,13 @@
         return NO;
     }
 
-#define EQUAL_OBJECTS(a, b) ((a) == (b) || [(a) isEqual:(b)])
     ParseClientConfiguration *other = object;
-    return (EQUAL_OBJECTS(self.applicationId, other.applicationId) &&
-            EQUAL_OBJECTS(self.clientKey, other.clientKey) &&
+    return ([PFObjectUtilities isObject:self.applicationId equalToObject:other.applicationId] &&
+            [PFObjectUtilities isObject:self.clientKey equalToObject:other.clientKey] &&
             self.localDatastoreEnabled == other.localDatastoreEnabled &&
-            EQUAL_OBJECTS(self.applicationGroupIdentifier, other.applicationGroupIdentifier) &&
-            EQUAL_OBJECTS(self.containingApplicationBundleIdentifier, other.containingApplicationBundleIdentifier) &&
+            [PFObjectUtilities isObject:self.applicationGroupIdentifier equalToObject:other.applicationGroupIdentifier] &&
+            [PFObjectUtilities isObject:self.containingApplicationBundleIdentifier equalToObject:other.containingApplicationBundleIdentifier] &&
             self.networkRetryAttempts == other.networkRetryAttempts);
-#undef EQUAL_OBJECTS
 }
 
 ///--------------------------------------
@@ -113,11 +109,11 @@
 - (instancetype)copyWithZone:(NSZone *)zone {
     return [ParseClientConfiguration configurationWithBlock:^(ParseClientConfiguration *configuration) {
         // Use direct assignment to skip over all of the assertions that may fail if we're not fully initialized yet.
-        configuration->_applicationId = self->_applicationId;
-        configuration->_clientKey = self->_clientKey;
+        configuration->_applicationId = [self->_applicationId copy];
+        configuration->_clientKey = [self->_clientKey copy];
         configuration->_localDatastoreEnabled = self->_localDatastoreEnabled;
-        configuration->_applicationGroupIdentifier = self->_applicationGroupIdentifier;
-        configuration->_containingApplicationBundleIdentifier = self->_containingApplicationBundleIdentifier;
+        configuration->_applicationGroupIdentifier = [self->_applicationGroupIdentifier copy];
+        configuration->_containingApplicationBundleIdentifier = [self->_containingApplicationBundleIdentifier copy];
         configuration->_networkRetryAttempts = self->_networkRetryAttempts;
     }];
 }
